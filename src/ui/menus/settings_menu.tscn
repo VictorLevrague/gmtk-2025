@@ -1,0 +1,159 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct1vpo7esd1h5"]
+
+[ext_resource type="Theme" uid="uid://lfnp5wnqi1j0" path="res://src/ui/custom_themes/default_theme.tres" id="1_0pnaf"]
+[ext_resource type="PackedScene" uid="uid://dbkrf8tjlxja" path="res://src/ui/ui_elements/audio_slider.tscn" id="1_lsj7o"]
+[ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="2_iekqu"]
+[ext_resource type="Script" uid="uid://ddwa5sr52migd" path="res://src/ui/menus/settings_menu.gd" id="3_mjsms"]
+[ext_resource type="Script" uid="uid://ds0rupd2jr5oh" path="res://src/ui/ui_elements/volume_label.gd" id="4_7dqga"]
+[ext_resource type="Script" uid="uid://dl1ssilhdo1ar" path="res://src/ui/menus/close_button.gd" id="6_ocn2b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbqjc"]
+
+[node name="Options" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -631.0
+offset_top = -361.0
+offset_right = 631.0
+offset_bottom = 361.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0pnaf")
+theme_override_styles/panel = ExtResource("2_iekqu")
+script = ExtResource("3_mjsms")
+
+[node name="TitlePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -143.5
+offset_top = -23.0
+offset_right = 145.5
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("2_iekqu")
+
+[node name="Title" type="RichTextLabel" parent="TitlePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0pnaf")
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[center]Settings[/center]"
+
+[node name="SoundSettings" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.0
+offset_top = -238.0
+offset_right = 548.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0pnaf")
+theme_override_constants/separation = 40
+
+[node name="MasterContainer" type="VBoxContainer" parent="SoundSettings"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_0pnaf")
+theme_override_constants/separation = 30
+
+[node name="MasterLabel" type="Label" parent="SoundSettings/MasterContainer" node_paths=PackedStringArray("slider")]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_0pnaf")
+text = "Master volume - x%"
+script = ExtResource("4_7dqga")
+base_text = "Master volume - %s%%"
+slider = NodePath("../MasterSlider")
+
+[node name="MasterSlider" parent="SoundSettings/MasterContainer" instance=ExtResource("1_lsj7o")]
+layout_mode = 2
+theme = ExtResource("1_0pnaf")
+value = 0.5
+ticks_on_borders = false
+audio_bus_name = "Master"
+
+[node name="MusicContainer" type="VBoxContainer" parent="SoundSettings"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_0pnaf")
+theme_override_constants/separation = 30
+
+[node name="MusicLabel" type="Label" parent="SoundSettings/MusicContainer" node_paths=PackedStringArray("slider")]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_0pnaf")
+text = "Music volume - x%"
+script = ExtResource("4_7dqga")
+base_text = "Music volume - %s%%"
+slider = NodePath("../MusicSlider")
+
+[node name="MusicSlider" parent="SoundSettings/MusicContainer" instance=ExtResource("1_lsj7o")]
+layout_mode = 2
+theme = ExtResource("1_0pnaf")
+ticks_on_borders = false
+audio_bus_name = "Music"
+
+[node name="SfxContainer" type="VBoxContainer" parent="SoundSettings"]
+layout_mode = 2
+theme = ExtResource("1_0pnaf")
+theme_override_constants/separation = 30
+
+[node name="SfxLabel" type="Label" parent="SoundSettings/SfxContainer" node_paths=PackedStringArray("slider")]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_0pnaf")
+text = "SFX volume - x%"
+script = ExtResource("4_7dqga")
+base_text = "SFX volume - %s%%"
+slider = NodePath("../SfxSlider")
+
+[node name="SfxSlider" parent="SoundSettings/SfxContainer" instance=ExtResource("1_lsj7o")]
+layout_mode = 2
+theme = ExtResource("1_0pnaf")
+ticks_on_borders = false
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -174.5
+offset_top = -45.0
+offset_right = 160.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0pnaf")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cbqjc")
+theme_override_styles/hover = ExtResource("2_iekqu")
+theme_override_styles/pressed = ExtResource("2_iekqu")
+theme_override_styles/normal = ExtResource("2_iekqu")
+text = "Close"
+script = ExtResource("6_ocn2b")
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]

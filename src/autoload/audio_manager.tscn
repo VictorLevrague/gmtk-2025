@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bav7nai4tyke7"]
+
+[ext_resource type="Script" uid="uid://ct1tlatdy3y21" path="res://src/autoload/audio_manager.gd" id="1_pcgf1"]
+[ext_resource type="AudioStream" uid="uid://mhufob3sika3" path="res://assets/sound/music/Spy Glass.mp3" id="2_mk1sw"]
+[ext_resource type="AudioStream" uid="uid://bt6ttojy1n2yb" path="res://assets/sound/SFX/bell.wav" id="3_pcgf1"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_pcgf1")
+first_music = ExtResource("2_mk1sw")
+
+[node name="Musics" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Musics"]
+unique_name_in_owner = true
+stream = ExtResource("2_mk1sw")
+bus = &"Music"
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="Sfx"]
+unique_name_in_owner = true
+stream = ExtResource("3_pcgf1")
+bus = &"SFX"

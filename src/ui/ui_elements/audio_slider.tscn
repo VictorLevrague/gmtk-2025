@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbkrf8tjlxja"]
+
+[ext_resource type="StyleBox" uid="uid://caopabwcg68rf" path="res://src/ui/custom_themes/slider_custom.tres" id="1_3d7tk"]
+[ext_resource type="Script" uid="uid://2csp5rawxjg5" path="res://src/ui/ui_elements/volume_slider.gd" id="1_dyan4"]
+[ext_resource type="StyleBox" uid="uid://m7phkos5b0s2" path="res://src/ui/custom_themes/grabber_custom.tres" id="2_snd5i"]
+
+[node name="AudioSlider" type="HSlider"]
+offset_right = 679.0
+offset_bottom = 16.0
+size_flags_vertical = 2
+theme_override_styles/slider = ExtResource("1_3d7tk")
+theme_override_styles/grabber_area = ExtResource("2_snd5i")
+theme_override_styles/grabber_area_highlight = ExtResource("2_snd5i")
+max_value = 1.0
+step = 0.001
+value = 1.0
+ticks_on_borders = true
+script = ExtResource("1_dyan4")
+audio_bus_name = "SFX"
