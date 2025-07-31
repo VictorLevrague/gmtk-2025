@@ -6,7 +6,7 @@ extends Node2D
         Signals.emit_signal("update_wave_id", wave_id)
 
 @export var enemies: Array[PackedScene]
-@export var wave_duration: float = 10
+@export var wave_duration: float = 30
 @export var maximum_nb_enemies_on_screen: int = 20
 @export var spawn_speed: float = 1.5
 @export var gold_per_enemy: int
@@ -14,6 +14,7 @@ extends Node2D
 var spawn_distance:= 700
 
 func _ready() -> void:
+    Signals.new_wave.connect(new_wave)
     new_wave()
 
 func _on_timer_timeout() -> void:
@@ -31,16 +32,18 @@ func spawn(position: Vector2):
         var enemy_instance = enemies[randi_range(0, enemies.size() - 1)].instantiate()
         enemy_instance.position = position
         %Enemies.add_child(enemy_instance)
+    else:
+        print("Nb enemies is max")
 
 func get_random_position() -> Vector2:
     var center_screen = get_viewport_rect().size / 2.0
     return center_screen + spawn_distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 
 func _on_wave_timer_timeout() -> void:
-    print("End wave")
     %SpawnerTimer.stop()
     %WaveTimer.stop()
     clear_enemies()
+    Signals.emit_signal("end_wave")
 
 func clear_enemies():
     for enemy in %Enemies.get_children():

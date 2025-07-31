@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://b854xt5qwqctp"]
 
 [ext_resource type="Script" uid="uid://de25b68ragips" path="res://src/ui/menus/game_ui.gd" id="1_jdnd6"]
-[ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="2_7ft61"]
 [ext_resource type="StyleBox" uid="uid://dn5uq2hhhe2ib" path="res://src/ui/custom_themes/custom_progress_bar_panel.tres" id="2_uoilq"]
 [ext_resource type="Script" uid="uid://xtcw2ihqr3b2" path="res://src/ui/ui_elements/custom_liquid_bar.gd" id="3_blig7"]
+[ext_resource type="Texture2D" uid="uid://dm0mr1gu326gg" path="res://assets/icons/money-bag.png" id="4_7ft61"]
 [ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="4_uoilq"]
 [ext_resource type="Texture2D" uid="uid://c48dl27qr28kq" path="res://assets/icons/cog.png" id="4_xtgum"]
 [ext_resource type="Script" uid="uid://042v75r6or48" path="res://src/ui/buttons/settings_texture_button.gd" id="5_xtgum"]
@@ -85,19 +85,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jdnd6")
 
-[node name="Background" type="TextureRect" parent="."]
-modulate = Color(0.945098, 0.803922, 0.760784, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_7ft61")
-stretch_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StatsPanel" type="Panel" parent="."]
-layout_mode = 1
+[node name="StatsPanel" type="Panel" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 21.0
@@ -107,7 +97,7 @@ offset_bottom = 139.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2llbp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StatsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,7 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Health" type="Panel" parent="StatsPanel/VBoxContainer"]
+[node name="Health" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_2llbp")
 layout_mode = 2
@@ -128,7 +118,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_uoilq")
 script = ExtResource("3_blig7")
 
-[node name="Label" type="Label" parent="StatsPanel/VBoxContainer/Health"]
+[node name="Label" type="Label" parent="CanvasLayer/StatsPanel/VBoxContainer/Health"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -142,7 +132,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Health"
 
-[node name="Panel" type="Panel" parent="StatsPanel/VBoxContainer/Health"]
+[node name="Panel" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer/Health"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -153,7 +143,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
 
-[node name="Mana" type="Panel" parent="StatsPanel/VBoxContainer"]
+[node name="Mana" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_hhle7")
 layout_mode = 2
@@ -161,7 +151,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_uoilq")
 script = ExtResource("3_blig7")
 
-[node name="Label" type="Label" parent="StatsPanel/VBoxContainer/Mana"]
+[node name="Label" type="Label" parent="CanvasLayer/StatsPanel/VBoxContainer/Mana"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -175,7 +165,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Mana"
 
-[node name="Panel" type="Panel" parent="StatsPanel/VBoxContainer/Mana"]
+[node name="Panel" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer/Mana"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -186,8 +176,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
 
-[node name="WaveInfo" type="Control" parent="."]
-layout_mode = 1
+[node name="WaveInfo" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -197,7 +187,7 @@ offset_right = 224.0
 offset_bottom = 123.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="WaveInfo"]
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaveInfo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -211,16 +201,42 @@ offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WaveNumber" type="Label" parent="WaveInfo/HBoxContainer"]
+[node name="WaveNumber" type="Label" parent="CanvasLayer/WaveInfo/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Wave n°x"
 horizontal_alignment = 1
 
-[node name="WaveTime" type="Label" parent="WaveInfo/HBoxContainer"]
+[node name="WaveTime" type="Label" parent="CanvasLayer/WaveInfo/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "100"
+horizontal_alignment = 1
+
+[node name="CoinTexture" type="TextureRect" parent="CanvasLayer"]
+offset_left = 33.0
+offset_top = 158.0
+offset_right = 134.0
+offset_bottom = 258.0
+texture = ExtResource("4_7ft61")
+expand_mode = 1
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer/CoinTexture"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -23.5
+offset_right = 21.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
 horizontal_alignment = 1
 
 [node name="OptionsLayer" type="CanvasLayer" parent="."]

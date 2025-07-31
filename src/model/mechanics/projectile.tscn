@@ -32,6 +32,7 @@ color_ramp = SubResource("GradientTexture1D_8b8wm")
 turbulence_enabled = true
 
 [node name="Projectile" type="Area2D" groups=["loop_stopper", "projectile"]]
+collision_layer = 4
 script = ExtResource("1_upyqx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

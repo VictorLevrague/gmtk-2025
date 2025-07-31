@@ -9,8 +9,10 @@ class_name enemy
         if health == 0:
             queue_free()
 @export var damage: float = 10
+@export var coins: int = 10
+
 var knockback: Vector2
-var knockback_strength = 80
+var knockback_strength = 40
 
 func _physics_process(delta: float) -> void:
     var center_screen = get_viewport_rect().size / 2.0

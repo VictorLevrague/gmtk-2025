@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu7fkk8unxjm7"]
+[gd_scene load_steps=11 format=3 uid="uid://cu7fkk8unxjm7"]
 
+[ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_to1yy"]
 [ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="2_to1yy"]
 [ext_resource type="PackedScene" uid="uid://bxpk6eksitrar" path="res://src/model/player.tscn" id="3_wayuo"]
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="4_vgh4s"]
 [ext_resource type="PackedScene" uid="uid://b854xt5qwqctp" path="res://src/ui/game_ui.tscn" id="5_vqht0"]
+[ext_resource type="PackedScene" uid="uid://7n227y8v8gqh" path="res://src/ui/menus/shop.tscn" id="6_to1yy"]
+[ext_resource type="Script" uid="uid://dr5av1apne3iu" path="res://src/ui/menus/game_over.gd" id="7_vqht0"]
+[ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="7_wayuo"]
+[ext_resource type="Script" uid="uid://dvrfxcqhbtn12" path="res://src/ui/menus/restart_button.gd" id="8_vgh4s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqht0"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -13,19 +20,116 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.945098, 0.803922, 0.760784, 1)
+z_index = -1000
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_to1yy")
+stretch_mode = 1
+
 [node name="GameUILayer" type="CanvasLayer" parent="."]
 
 [node name="GameUI" parent="GameUILayer" node_paths=PackedStringArray("player") instance=ExtResource("5_vqht0")]
 unique_name_in_owner = true
-player = NodePath("../../GameLayer/Player")
+z_index = -1
+player = NodePath("../../GameComponents/Player")
 
-[node name="GameLayer" type="CanvasLayer" parent="."]
+[node name="GameComponents" type="Node" parent="."]
 
-[node name="LoopTool" parent="GameLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_to1yy")]
+[node name="LoopTool" parent="GameComponents" node_paths=PackedStringArray("player") instance=ExtResource("2_to1yy")]
 unique_name_in_owner = true
 player = NodePath("../Player")
 
-[node name="Player" parent="GameLayer" instance=ExtResource("3_wayuo")]
+[node name="Player" parent="GameComponents" instance=ExtResource("3_wayuo")]
 position = Vector2(960, 540)
 
-[node name="EnemySpawner" parent="GameLayer" instance=ExtResource("4_vgh4s")]
+[node name="EnemySpawner" parent="GameComponents" instance=ExtResource("4_vgh4s")]
+
+[node name="ShopLayer" type="CanvasLayer" parent="."]
+
+[node name="Shop" parent="ShopLayer" instance=ExtResource("6_to1yy")]
+visible = false
+offset_left = 88.0
+offset_top = 201.0
+offset_right = -136.0
+offset_bottom = -84.0
+
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOver" type="Control" parent="GameOverLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_vqht0")
+
+[node name="TextureRect" type="ColorRect" parent="GameOverLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -398.0
+offset_top = -241.0
+offset_right = 398.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.601223, 0.601223, 0.601223, 0.545098)
+
+[node name="Panel" type="Panel" parent="GameOverLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 203.0
+offset_right = -173.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("7_wayuo")
+
+[node name="Label" type="Label" parent="GameOverLayer/GameOver/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -369.0
+offset_top = -1.0
+offset_right = 369.0
+offset_bottom = 98.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "You lost"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverLayer/GameOver/Panel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -69.0
+offset_right = 245.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vqht0")
+theme_override_styles/disabled = ExtResource("7_wayuo")
+theme_override_styles/hover = ExtResource("7_wayuo")
+theme_override_styles/pressed = ExtResource("7_wayuo")
+theme_override_styles/normal = ExtResource("7_wayuo")
+text = "Try again"
+script = ExtResource("8_vgh4s")
+
+[connection signal="pressed" from="GameOverLayer/GameOver/Panel/RestartButton" to="GameOverLayer/GameOver/Panel/RestartButton" method="_on_pressed"]

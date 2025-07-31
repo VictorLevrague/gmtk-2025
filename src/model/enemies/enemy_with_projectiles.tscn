@@ -9,6 +9,8 @@
 size = Vector2(68.6143, 67.5797)
 
 [node name="EnemyWithProjectiles" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_tb4dk")
 speed = 50.0
 

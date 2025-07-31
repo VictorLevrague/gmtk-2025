@@ -8,6 +8,7 @@ radius = 59.0
 height = 218.0
 
 [node name="Player" type="Area2D"]
+collision_mask = 7
 script = ExtResource("1_l6ogf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
