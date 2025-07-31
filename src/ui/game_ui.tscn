@@ -59,7 +59,7 @@ shader_parameter/HealthAmount = 0.988
 shader_parameter/HealthColor = Color(0.349996, 0.695106, 0.27404, 1)
 shader_parameter/WaveSpeed = 2.456
 shader_parameter/WavePeriod = 2.1
-shader_parameter/WaveAmplitude = 0.009
+shader_parameter/WaveAmplitude = 0.047
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhle7"]
 bg_color = Color(0.495191, 0.637441, 0.583432, 1)
