@@ -2,7 +2,7 @@ extends Node2D
 
 @export var enemies: Array[PackedScene]
 
-var distance:= 1000
+var distance:= 700
 
 func _on_timer_timeout() -> void:
     spawn(get_random_position())
