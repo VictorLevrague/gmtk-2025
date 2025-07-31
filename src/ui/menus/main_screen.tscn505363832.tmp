@@ -1,15 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://he0hve4tvnis"]
+[gd_scene load_steps=3 format=3 uid="uid://he0hve4tvnis"]
 
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_6esld"]
-[ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="2_pqdi3"]
 [ext_resource type="Script" uid="uid://b17io0l16e202" path="res://src/ui/buttons/settings_button.gd" id="2_ye5sf"]
-[ext_resource type="Script" uid="uid://cnxlk7adyetwc" path="res://src/ui/buttons/change_scene_button.gd" id="3_0253g"]
-[ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="3_ye5sf"]
-[ext_resource type="PackedScene" uid="uid://cu7fkk8unxjm7" path="res://src/ui/menus/game.tscn" id="4_0253g"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydojc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_suuo2"]
 
 [node name="MainScreen" type="Control"]
 layout_mode = 3
@@ -50,8 +42,8 @@ offset_top = 53.0
 offset_right = 340.0
 offset_bottom = 136.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 100
-text = "Defend the magic whip"
+theme_override_font_sizes/font_size = 80
+text = "Name"
 horizontal_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="."]
@@ -72,26 +64,13 @@ theme_override_constants/separation = 60
 [node name="PlayButton" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ydojc")
-theme_override_styles/normal = ExtResource("2_pqdi3")
 text = "Play"
-script = ExtResource("3_0253g")
-next_scene = ExtResource("4_0253g")
 
 [node name="SettingsButton" type="Button" parent="Buttons"]
 z_index = 2
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/focus = SubResource("StyleBoxEmpty_suuo2")
-theme_override_styles/normal = ExtResource("2_pqdi3")
 text = "Settings"
 script = ExtResource("2_ye5sf")
 
-[node name="OptionsLayer" type="CanvasLayer" parent="."]
-
-[node name="Options" parent="OptionsLayer" instance=ExtResource("3_ye5sf")]
-unique_name_in_owner = true
-visible = false
-
-[connection signal="pressed" from="Buttons/PlayButton" to="Buttons/PlayButton" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/SettingsButton" to="Buttons/SettingsButton" method="_on_pressed"]

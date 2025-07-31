@@ -9,7 +9,7 @@ script = ExtResource("1_47vej")
 enemies = Array[PackedScene]([ExtResource("2_xk3nj"), ExtResource("3_sixl8")])
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

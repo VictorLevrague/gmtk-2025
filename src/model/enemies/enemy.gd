@@ -15,7 +15,6 @@ var knockback_strength = 80
 func _physics_process(delta: float) -> void:
     var center_screen = get_viewport_rect().size / 2.0
     velocity = (center_screen - position).normalized() * speed
-    print("knockback: ", knockback)
     add_knockback()
     var collider = move_and_collide(velocity * delta)
     if collider:

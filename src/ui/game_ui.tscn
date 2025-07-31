@@ -1,0 +1,203 @@
+[gd_scene load_steps=12 format=3 uid="uid://b854xt5qwqctp"]
+
+[ext_resource type="Script" uid="uid://de25b68ragips" path="res://src/ui/menus/game_ui.gd" id="1_jdnd6"]
+[ext_resource type="StyleBox" uid="uid://dn5uq2hhhe2ib" path="res://src/ui/custom_themes/custom_progress_bar_panel.tres" id="2_uoilq"]
+[ext_resource type="Script" uid="uid://xtcw2ihqr3b2" path="res://src/ui/ui_elements/custom_liquid_bar.gd" id="3_blig7"]
+[ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="4_uoilq"]
+[ext_resource type="Texture2D" uid="uid://c48dl27qr28kq" path="res://assets/icons/cog.png" id="4_xtgum"]
+[ext_resource type="Script" uid="uid://042v75r6or48" path="res://src/ui/buttons/settings_texture_button.gd" id="5_xtgum"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2llbp"]
+bg_color = Color(0.813294, 0.695152, 0.436256, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Shader" id="Shader_2llbp"]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float HealthAmount : hint_range(0,1) = 0.8;
+uniform vec4 HealthColor : source_color = vec4(0.64,0.08,0.08,1.0);
+uniform float WaveSpeed : hint_range(0.01,10.0) = 5.0;
+uniform float WavePeriod : hint_range(0.1,10) = 3.0;
+uniform float WaveAmplitude : hint_range(0,0.35) = 0.25;
+
+void fragment()
+{
+    // vertical sine wave (varies with UV.y)
+    float sin_wave = sin( ( TIME + ( UV.y / WavePeriod ) ) * WaveSpeed );
+    float scaled_sin_wave = (sin_wave * 0.5) + 0.5;
+
+    // reduce amplitude near full/empty health
+    float wave_amp_scale = min(
+        smoothstep(1.0, 1.0 - WaveAmplitude, HealthAmount),
+        smoothstep(0.0, WaveAmplitude * 2.0, HealthAmount)
+    );
+
+    // wave-modified threshold
+    float wave_test_val = (1. - HealthAmount) - scaled_sin_wave * WaveAmplitude * wave_amp_scale;
+
+    // fill anchored on right; as HealthAmount decreases the filled region retreats leftward
+    float wave = UV.x < (1.0 - wave_test_val) ? 1.0 : 0.0;
+
+    COLOR.rgb = HealthColor.rgb;
+    COLOR.a = wave * HealthColor.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2llbp"]
+shader = SubResource("Shader_2llbp")
+shader_parameter/HealthAmount = 0.988
+shader_parameter/HealthColor = Color(0.349996, 0.695106, 0.27404, 1)
+shader_parameter/WaveSpeed = 2.456
+shader_parameter/WavePeriod = 2.1
+shader_parameter/WaveAmplitude = 0.009
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhle7"]
+bg_color = Color(0.495191, 0.637441, 0.583432, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhle7"]
+shader = SubResource("Shader_2llbp")
+shader_parameter/HealthAmount = 0.988
+shader_parameter/HealthColor = Color(0.237034, 0.613863, 0.982241, 1)
+shader_parameter/WaveSpeed = 2.456
+shader_parameter/WavePeriod = 2.1
+shader_parameter/WaveAmplitude = 0.009
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jdnd6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 250.0
+offset_top = 27.0
+offset_right = -148.0
+offset_bottom = 205.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2llbp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -738.0
+offset_top = -74.0
+offset_right = 738.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Health" type="Panel" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_2llbp")
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_uoilq")
+script = ExtResource("3_blig7")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Health"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -27.5
+offset_right = 146.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Health"
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/Health"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
+
+[node name="Mana" type="Panel" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_hhle7")
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_uoilq")
+script = ExtResource("3_blig7")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Mana"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -27.5
+offset_right = 126.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Mana"
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/Mana"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
+
+[node name="OptionsLayer" type="CanvasLayer" parent="."]
+
+[node name="Options" parent="OptionsLayer" instance=ExtResource("4_uoilq")]
+unique_name_in_owner = true
+visible = false
+
+[node name="SettingsButton" type="TextureButton" parent="OptionsLayer"]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.933
+anchor_top = 0.873
+anchor_right = 0.997
+anchor_bottom = 0.993
+offset_left = 0.639893
+offset_top = 0.159973
+offset_right = -0.240112
+offset_bottom = -0.440063
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_xtgum")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_xtgum")
+
+[connection signal="pressed" from="OptionsLayer/SettingsButton" to="OptionsLayer/SettingsButton" method="_on_pressed"]
