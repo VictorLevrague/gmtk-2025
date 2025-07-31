@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba3dgk3thuhmt"]
+
+[ext_resource type="Script" uid="uid://dslph7nnbbtcl" path="res://src/model/mechanics/projectile.gd" id="1_upyqx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q6yms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho6g7"]
+size = Vector2(27.2578, 26.8599)
+
+[sub_resource type="Gradient" id="Gradient_upyqx"]
+colors = PackedColorArray(0.00100882, 0.212092, 0.971421, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8b8wm"]
+gradient = SubResource("Gradient_upyqx")
+
+[sub_resource type="Curve" id="Curve_g47ju"]
+_data = [Vector2(0.0197842, 0.928412), 0.0, 0.0, 0, 0, Vector2(0.991007, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ctvc"]
+curve = SubResource("Curve_g47ju")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_meq7m"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 17.6
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_0ctvc")
+color_ramp = SubResource("GradientTexture1D_8b8wm")
+turbulence_enabled = true
+
+[node name="Projectile" type="Area2D" groups=["loop_stopper", "projectile"]]
+script = ExtResource("1_upyqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.00498158, 0.00498205)
+scale = Vector2(27.5996, 26.5696)
+texture = SubResource("CanvasTexture_q6yms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.00181389, -0.00572014)
+shape = SubResource("RectangleShape2D_ho6g7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_meq7m")
