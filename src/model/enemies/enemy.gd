@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name enemy
 
-@export var speed: float = 75
+@export var speed: float = 35
 @export var health: float = 100:
     set(value):
         health = clamp(value, 0, 100)
