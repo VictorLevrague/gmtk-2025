@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxpk6eksitrar"]
+
+[ext_resource type="Texture2D" uid="uid://d3c20qymmkver" path="res://assets/sprites/tower_round.svg" id="1_cl45y"]
+[ext_resource type="Script" uid="uid://c48shjpet0yhn" path="res://src/model/player.gd" id="1_l6ogf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6ogf"]
+radius = 59.0
+height = 218.0
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_l6ogf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.5, 0)
+scale = Vector2(1.75781, 1.89063)
+texture = ExtResource("1_cl45y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_l6ogf")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
