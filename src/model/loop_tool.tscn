@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://261qfcdd3sjt"]
+
+[ext_resource type="Script" uid="uid://dt0lpdw0dean5" path="res://loop_tool.gd" id="1_c40q8"]
+
+[sub_resource type="Gradient" id="Gradient_2hfit"]
+
+[node name="LoopTool" type="Line2D"]
+gradient = SubResource("Gradient_2hfit")
+joint_mode = 2
+script = ExtResource("1_c40q8")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_loop_tool_area_entered"]
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_loop_tool_body_entered"]
