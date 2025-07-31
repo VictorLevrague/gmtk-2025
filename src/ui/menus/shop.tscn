@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://7n227y8v8gqh"]
+
+[ext_resource type="Script" uid="uid://cawcaaccwj6vt" path="res://src/ui/menus/shop.gd" id="1_nj1vb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj1vb"]
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 0.737255)
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nj1vb")
+
+[node name="Background2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nj1vb")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "Shop"
+horizontal_alignment = 1
+
+[node name="NextWaveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -342.0
+offset_top = -170.0
+offset_right = 323.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Next wave"
+
+[connection signal="pressed" from="NextWaveButton" to="." method="_on_next_wave_button_pressed"]
