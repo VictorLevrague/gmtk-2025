@@ -1,0 +1,184 @@
+[gd_scene load_steps=13 format=3 uid="uid://cu7fkk8unxjm7"]
+
+[ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="1_u80lu"]
+[ext_resource type="PackedScene" uid="uid://bxpk6eksitrar" path="res://src/model/player.tscn" id="2_psmup"]
+[ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="3_2llbp"]
+[ext_resource type="Script" uid="uid://de25b68ragips" path="res://src/ui/menus/game_ui.gd" id="4_hhle7"]
+[ext_resource type="PackedScene" uid="uid://cjngf21xcrnng" path="res://src/model/enemies/enemy.tscn" id="6_ohjhh"]
+[ext_resource type="StyleBox" uid="uid://dn5uq2hhhe2ib" path="res://src/ui/custom_themes/custom_progress_bar_panel.tres" id="6_psmup"]
+[ext_resource type="Script" uid="uid://xtcw2ihqr3b2" path="res://src/ui/ui_elements/custom_liquid_bar.gd" id="7_2llbp"]
+[ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/enemy_with_projectiles.tscn" id="7_r6twj"]
+
+[sub_resource type="Shader" id="Shader_2llbp"]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float HealthAmount : hint_range(0,1) = 0.8;
+uniform vec4 HealthColor : source_color = vec4(0.64,0.08,0.08,1.0);
+uniform float WaveSpeed : hint_range(0.01,10.0) = 5.0;
+uniform float WavePeriod : hint_range(0.1,10) = 3.0;
+uniform float WaveAmplitude : hint_range(0,0.35) = 0.25;
+
+void fragment()
+{
+    // vertical sine wave (varies with UV.y)
+    float sin_wave = sin( ( TIME + ( UV.y / WavePeriod ) ) * WaveSpeed );
+    float scaled_sin_wave = (sin_wave * 0.5) + 0.5;
+
+    // reduce amplitude near full/empty health
+    float wave_amp_scale = min(
+        smoothstep(1.0, 1.0 - WaveAmplitude, HealthAmount),
+        smoothstep(0.0, WaveAmplitude * 2.0, HealthAmount)
+    );
+
+    // wave-modified threshold
+    float wave_test_val = (1. - HealthAmount) - scaled_sin_wave * WaveAmplitude * wave_amp_scale;
+
+    // fill anchored on right; as HealthAmount decreases the filled region retreats leftward
+    float wave = UV.x < (1.0 - wave_test_val) ? 1.0 : 0.0;
+
+    COLOR.rgb = HealthColor.rgb;
+    COLOR.a = wave * HealthColor.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2llbp"]
+shader = SubResource("Shader_2llbp")
+shader_parameter/HealthAmount = 0.988
+shader_parameter/HealthColor = Color(0.349996, 0.695106, 0.27404, 1)
+shader_parameter/WaveSpeed = 2.456
+shader_parameter/WavePeriod = 2.1
+shader_parameter/WaveAmplitude = 0.009
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhle7"]
+bg_color = Color(0.495191, 0.637441, 0.583432, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhle7"]
+shader = SubResource("Shader_2llbp")
+shader_parameter/HealthAmount = 0.988
+shader_parameter/HealthColor = Color(0.237034, 0.613863, 0.982241, 1)
+shader_parameter/WaveSpeed = 2.456
+shader_parameter/WavePeriod = 2.1
+shader_parameter/WaveAmplitude = 0.009
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoopTool" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_u80lu")]
+unique_name_in_owner = true
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_psmup")]
+position = Vector2(960, 540)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_2llbp")]
+
+[node name="GameUI" type="Control" parent="." node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_hhle7")
+player = NodePath("../Player")
+
+[node name="Health" type="Panel" parent="GameUI"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_2llbp")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1669.0
+offset_top = 16.0
+offset_right = -174.0
+offset_bottom = 84.0
+grow_horizontal = 0
+theme_override_styles/panel = ExtResource("6_psmup")
+script = ExtResource("7_2llbp")
+
+[node name="Label" type="Label" parent="GameUI/Health"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -8.0
+offset_right = 229.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Health"
+
+[node name="Panel" type="Panel" parent="GameUI/Health"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
+
+[node name="Mana" type="Panel" parent="GameUI"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_hhle7")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1669.0
+offset_top = 103.0
+offset_right = -174.0
+offset_bottom = 171.0
+grow_horizontal = 0
+theme_override_styles/panel = ExtResource("6_psmup")
+script = ExtResource("7_2llbp")
+
+[node name="Label" type="Label" parent="GameUI/Mana"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -8.0
+offset_right = 229.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Mana"
+
+[node name="Panel" type="Panel" parent="GameUI/Mana"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("6_ohjhh")]
+position = Vector2(311, 259)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("6_ohjhh")]
+position = Vector2(375, 900)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("6_ohjhh")]
+position = Vector2(1536, 703)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("6_ohjhh")]
+position = Vector2(1149, 558)
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("7_r6twj")]
+position = Vector2(219, 578)
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("7_r6twj")]
+position = Vector2(1037, 851)
