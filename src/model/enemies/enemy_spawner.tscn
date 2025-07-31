@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2jw008k6maxe"]
+
+[ext_resource type="Script" uid="uid://crobp52n616oh" path="res://src/model/enemies/enemy_spawner.gd" id="1_47vej"]
+[ext_resource type="PackedScene" uid="uid://cjngf21xcrnng" path="res://src/model/enemies/enemy.tscn" id="2_xk3nj"]
+[ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/enemy_with_projectiles.tscn" id="3_sixl8"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_47vej")
+enemies = Array[PackedScene]([ExtResource("2_xk3nj"), ExtResource("3_sixl8")])
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
