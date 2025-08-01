@@ -9,6 +9,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbqjc"]
 
 [node name="Options" type="Panel"]
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
