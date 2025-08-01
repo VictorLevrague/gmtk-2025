@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cu7fkk8unxjm7"]
+[gd_scene load_steps=15 format=3 uid="uid://cu7fkk8unxjm7"]
 
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_to1yy"]
 [ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="2_to1yy"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="10_jrwaj"]
 [ext_resource type="Texture2D" uid="uid://c48dl27qr28kq" path="res://assets/icons/cog.png" id="11_44nrx"]
 [ext_resource type="Script" uid="uid://042v75r6or48" path="res://src/ui/buttons/settings_texture_button.gd" id="12_1k1v4"]
+[ext_resource type="Script" uid="uid://itqtj6yfj8fq" path="res://src/ui/menus/win.gd" id="13_44nrx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqht0"]
 
@@ -161,5 +162,83 @@ theme_override_styles/normal = ExtResource("7_wayuo")
 text = "Try again"
 script = ExtResource("8_vgh4s")
 
+[node name="WinLayer" type="CanvasLayer" parent="."]
+
+[node name="Win" type="Control" parent="WinLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_44nrx")
+
+[node name="TextureRect" type="ColorRect" parent="WinLayer/Win"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -398.0
+offset_top = -241.0
+offset_right = 398.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.601223, 0.601223, 0.601223, 0.545098)
+
+[node name="Panel" type="Panel" parent="WinLayer/Win"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 203.0
+offset_right = -173.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("7_wayuo")
+
+[node name="Label" type="Label" parent="WinLayer/Win/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -609.0
+offset_top = 73.0
+offset_right = 631.0
+offset_bottom = 581.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 120
+text = "Congratulations !!!
+You defeated the 20 waves.
+
+Thanks for playing"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="WinLayer/Win/Panel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -69.0
+offset_right = 245.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vqht0")
+theme_override_styles/disabled = ExtResource("7_wayuo")
+theme_override_styles/hover = ExtResource("7_wayuo")
+theme_override_styles/pressed = ExtResource("7_wayuo")
+theme_override_styles/normal = ExtResource("7_wayuo")
+text = "Try again"
+script = ExtResource("8_vgh4s")
+
 [connection signal="pressed" from="OptionsLayer/SettingsButton" to="OptionsLayer/SettingsButton" method="_on_pressed"]
 [connection signal="pressed" from="GameOverLayer/GameOver/Panel/RestartButton" to="GameOverLayer/GameOver/Panel/RestartButton" method="_on_pressed"]
+[connection signal="pressed" from="WinLayer/Win/Panel/RestartButton" to="WinLayer/Win/Panel/RestartButton" method="_on_pressed"]

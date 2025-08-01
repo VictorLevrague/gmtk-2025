@@ -17,6 +17,7 @@ func _ready() -> void:
     Signals.update_wave_time.connect(update_wave_time)
 
 func update_wave_id(wave_id: int) -> void:
+    print("in")
     var base_text = "Wave n°%s"
     %WaveNumber.text = base_text % [wave_id]
 

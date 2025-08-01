@@ -1,58 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dce18yypthenr"]
 
-[ext_resource type="PackedScene" uid="uid://jjrwf0o12eq0" path="res://src/model/waves/wave_1.tscn" id="1_m8tya"]
+[ext_resource type="Script" uid="uid://cyk6yemapx7ex" path="res://src/model/waves/wave_manager.gd" id="1_m8tya"]
 [ext_resource type="Script" uid="uid://bpfjghi51wngx" path="res://src/model/enemies/wave_timer.gd" id="2_m8tya"]
-
-[sub_resource type="GDScript" id="GDScript_m8tya"]
-script/source = "extends Node2D
-
-@export var initial_wave: PackedScene
-
-var wave_duration: float
-
-var wave_id: int = 0:
-    set(value):
-        wave_id = value
-        Signals.emit_signal(\"update_wave_id\", wave_id)
-
-func _ready() -> void:
-    Signals.new_wave.connect(new_wave)
-    new_wave()
-
-func new_wave() -> void:
-    wave_id += 1
-    var new_wave_to_instantiate
-    if wave_id != 1:
-        var current_wave = %EnemySpawners.get_child(0)
-        new_wave_to_instantiate = current_wave.next_wave.instantiate()
-        current_wave.queue_free()
-    else:
-        new_wave_to_instantiate = initial_wave.instantiate()
-    wave_duration = new_wave_to_instantiate.wave_duration
-    %EnemySpawners.add_child(new_wave_to_instantiate)
-    %WaveTimer.wait_time = wave_duration
-    %WaveTimer.start()
-    start_all_enemy_spawn_timers()
-
-func _on_wave_timer_timeout() -> void:
-    %WaveTimer.stop()
-    stop_all_enemy_spawn_timers()
-    Signals.emit_signal(\"end_wave\")
-
-func start_all_enemy_spawn_timers():
-    for enemy_spawner in %EnemySpawners.get_child(0).get_children():
-        enemy_spawner.get_node(\"%SpawnerTimer\").start()
-
-func stop_all_enemy_spawn_timers():
-    for enemy_spawner in %EnemySpawners.get_child(0).get_children():
-        enemy_spawner.get_node(\"%SpawnerTimer\").stop()
-        enemy_spawner.clear_enemies()
-"
+[ext_resource type="PackedScene" uid="uid://jjrwf0o12eq0" path="res://src/model/waves/wave_1.tscn" id="2_q86uv"]
 
 [node name="WaveManager" type="Node2D"]
 position = Vector2(960, 540)
-script = SubResource("GDScript_m8tya")
-initial_wave = ExtResource("1_m8tya")
+script = ExtResource("1_m8tya")
+initial_wave = ExtResource("2_q86uv")
 
 [node name="EnemySpawners" type="Node" parent="."]
 unique_name_in_owner = true
