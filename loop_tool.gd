@@ -9,7 +9,7 @@ var mana_cost_per_length = 0.01
 
 func _process(delta):
     if Input.is_action_pressed("left_mouse_click"):
-        if player.mana:
+        if player:
             if not points.size():
                 add_point(get_local_mouse_position())
             else:
@@ -22,11 +22,12 @@ func _process(delta):
                         check_loop_formation(new_start, new_end)
                     if player:
                         var added_length = new_end.distance_to(new_start)
-                        player.mana -= mana_cost_per_length * added_length
+                        player.mana -= added_length
                     while get_total_line_length() >= maximum_line_length:
                         remove_point_and_collision(0)
     if Input.is_action_just_released("left_mouse_click"):
         clear_line()
+        player.regen_mana()
 
 func remove_point_and_collision(index):
     remove_point(index)
@@ -40,6 +41,7 @@ func check_loop_formation(new_start: Vector2, new_end: Vector2):
             var polygon = points.duplicate()
             check_enemies_inside_polygon(polygon) #Not optimized
             clear_line()
+            player.regen_mana()
 
 func is_required_segment_length_obtained() -> bool:
     var mouse_position = get_global_mouse_position()

@@ -6,9 +6,15 @@ signal player_health_changed(value: float)
 signal player_mana_changed(value: float)
 signal player_coins_changed(value: int)
 
-var regen_mana_rate = 10
-var max_health:= 100.
-var max_mana:= 100.
+var max_health:= 100.:
+    set(value):
+        max_health = value
+        Signals.emit_signal("update_max_health", max_health)
+        full_heal()
+var max_mana:= 2000.:
+    set(value):
+        max_mana = value
+        Signals.emit_signal("update_max_mana", max_mana)
 
 var health: float = max_health:
     set(value):
@@ -41,12 +47,9 @@ func take_damage(body: Node2D):
         health -= body.damage
         body.queue_free()
 
-func _process(delta: float) -> void:
-    regen_mana(delta)
-
-func regen_mana(delta):
-    mana += regen_mana_rate * delta
-
 func full_heal():
     health = max_health
+    regen_mana()
+
+func regen_mana():
     mana = max_mana
