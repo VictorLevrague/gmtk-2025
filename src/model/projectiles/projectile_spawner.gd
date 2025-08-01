@@ -2,6 +2,11 @@ extends Node2D
 
 @export var projectile_scene: PackedScene
 
+@export var shoot_frequency: float = 5.:
+    set(value):
+        shoot_frequency = value
+        %Timer.wait_time = shoot_frequency
+
 func _on_timer_timeout() -> void:
     var projectile = projectile_scene.instantiate()
     projectile.position = position
