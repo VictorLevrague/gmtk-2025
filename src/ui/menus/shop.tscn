@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://7n227y8v8gqh"]
+[gd_scene load_steps=6 format=3 uid="uid://7n227y8v8gqh"]
 
 [ext_resource type="Script" uid="uid://cawcaaccwj6vt" path="res://src/ui/menus/shop.gd" id="1_nj1vb"]
+[ext_resource type="Script" uid="uid://dx47xysjgvvcl" path="res://src/model/upgrades/upgrade.gd" id="2_gxqn3"]
+[ext_resource type="PackedScene" uid="uid://in3d1ruusblo" path="res://src/ui/ui_elements/upgrade_ui.tscn" id="2_q2uod"]
+[ext_resource type="Resource" uid="uid://r1btr8f2sreg" path="res://src/model/upgrades/health_lvl_1.tres" id="3_gprgp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj1vb"]
 bg_color = Color(0.0666667, 0.0666667, 0.0666667, 0.737255)
@@ -13,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nj1vb")
+possible_upgrades = Array[ExtResource("2_gxqn3")]([ExtResource("3_gprgp")])
 
 [node name="Background2" type="Panel" parent="."]
 layout_mode = 1
@@ -32,6 +36,31 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 100
 text = "Shop"
 horizontal_alignment = 1
+
+[node name="UpgradeContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -686.0
+offset_top = -224.0
+offset_right = 686.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upgrade" parent="UpgradeContainer" instance=ExtResource("2_q2uod")]
+layout_mode = 2
+upgrade = ExtResource("3_gprgp")
+
+[node name="Upgrade2" parent="UpgradeContainer" instance=ExtResource("2_q2uod")]
+layout_mode = 2
+
+[node name="Upgrade3" parent="UpgradeContainer" instance=ExtResource("2_q2uod")]
+layout_mode = 2
 
 [node name="NextWaveButton" type="Button" parent="."]
 layout_mode = 1

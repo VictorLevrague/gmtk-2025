@@ -52,15 +52,16 @@ player = NodePath("../Player")
 position = Vector2(960, 540)
 
 [node name="EnemySpawner" parent="GameComponents" instance=ExtResource("4_vgh4s")]
+wave_duration = 1.0
 
 [node name="ShopLayer" type="CanvasLayer" parent="."]
 
-[node name="Shop" parent="ShopLayer" instance=ExtResource("6_to1yy")]
-visible = false
+[node name="Shop" parent="ShopLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_to1yy")]
 offset_left = 88.0
 offset_top = 201.0
 offset_right = -136.0
 offset_bottom = -84.0
+player = NodePath("../../GameComponents/Player")
 
 [node name="OptionsLayer" type="CanvasLayer" parent="."]
 
