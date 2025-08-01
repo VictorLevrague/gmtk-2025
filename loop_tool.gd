@@ -92,7 +92,7 @@ func check_enemies_inside_polygon(polygon_points: PackedVector2Array) -> void:
             var global_pos = enemy.get_global_position()
             var local_pos = to_local(global_pos)
             if is_point_inside_polygon(local_pos, polygon_points):
-                enemy.health -= 100
+                enemy.take_damage(100)
                 player.coins += enemy.coins
 
 func is_point_inside_polygon(point: Vector2, polygon: PackedVector2Array) -> bool:

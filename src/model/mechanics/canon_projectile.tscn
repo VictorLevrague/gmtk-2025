@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ba3dgk3thuhmt"]
 
-[ext_resource type="Script" uid="uid://dslph7nnbbtcl" path="res://src/model/mechanics/projectile.gd" id="1_upyqx"]
+[ext_resource type="Script" uid="uid://dslph7nnbbtcl" path="res://src/model/mechanics/projectile.gd" id="1_y1kf3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_q6yms"]
 
@@ -35,9 +35,10 @@ turbulence_enabled = true
 
 [node name="Projectile" type="Area2D" groups=["loop_stopper", "projectile"]]
 collision_layer = 4
-script = ExtResource("1_upyqx")
+script = ExtResource("1_y1kf3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0.00498158, 0.00498205)
 scale = Vector2(27.5996, 26.5696)
 texture = SubResource("CanvasTexture_q6yms")

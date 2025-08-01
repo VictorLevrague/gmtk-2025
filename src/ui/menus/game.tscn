@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cu7fkk8unxjm7"]
+[gd_scene load_steps=15 format=3 uid="uid://cu7fkk8unxjm7"]
 
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_to1yy"]
 [ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="2_to1yy"]
 [ext_resource type="PackedScene" uid="uid://bxpk6eksitrar" path="res://src/model/player.tscn" id="3_wayuo"]
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="4_vgh4s"]
 [ext_resource type="PackedScene" uid="uid://b854xt5qwqctp" path="res://src/ui/game_ui.tscn" id="5_vqht0"]
+[ext_resource type="PackedScene" uid="uid://bxrcx8fmr1vqb" path="res://src/model/enemies/resistant_enemy.tscn" id="6_44nrx"]
 [ext_resource type="PackedScene" uid="uid://7n227y8v8gqh" path="res://src/ui/menus/shop.tscn" id="6_to1yy"]
 [ext_resource type="Script" uid="uid://dr5av1apne3iu" path="res://src/ui/menus/game_over.gd" id="7_vqht0"]
 [ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="7_wayuo"]
@@ -52,6 +53,9 @@ player = NodePath("../Player")
 position = Vector2(960, 540)
 
 [node name="EnemySpawner" parent="GameComponents" instance=ExtResource("4_vgh4s")]
+
+[node name="ResistantEnemy" parent="GameComponents" instance=ExtResource("6_44nrx")]
+position = Vector2(126, 595)
 
 [node name="ShopLayer" type="CanvasLayer" parent="."]
 

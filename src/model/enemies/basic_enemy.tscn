@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjngf21xcrnng"]
+
+[ext_resource type="Script" uid="uid://dbycdl8x7i8i" path="res://src/model/enemies/enemy.gd" id="1_ugpo3"]
+[ext_resource type="Texture2D" uid="uid://di658xwj327dt" path="res://assets/icons/fish.png" id="2_ugpo3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_asy51"]
+radius = 28.9687
+height = 115.429
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_ugpo3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.208373, 0.152834)
+texture = ExtResource("2_ugpo3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_asy51")
