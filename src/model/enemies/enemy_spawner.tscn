@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2jw008k6maxe"]
+[gd_scene load_steps=5 format=3 uid="uid://b2jw008k6maxe"]
 
 [ext_resource type="Script" uid="uid://crobp52n616oh" path="res://src/model/enemies/enemy_spawner.gd" id="1_47vej"]
+[ext_resource type="PackedScene" uid="uid://caq5a0k6ful7y" path="res://src/model/enemies/fast_shooter_enemy.tscn" id="3_mwp58"]
 [ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/canon_enemy.tscn" id="3_sixl8"]
 [ext_resource type="Script" uid="uid://bpfjghi51wngx" path="res://src/model/enemies/wave_timer.gd" id="4_mwp58"]
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_47vej")
-enemies = Array[PackedScene]([ExtResource("3_sixl8")])
+enemies = Array[PackedScene]([ExtResource("3_sixl8"), ExtResource("3_mwp58")])
 
 [node name="SpawnerTimer" type="Timer" parent="."]
 unique_name_in_owner = true

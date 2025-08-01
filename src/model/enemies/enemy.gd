@@ -44,6 +44,7 @@ func take_damage(damage: float):
 func damage_tween() -> Tween:
     var tween = get_tree().create_tween()
     if %Sprite2D:
+        var base_color = %Sprite2D.modulate
         tween.tween_property(%Sprite2D, "modulate", Color(3, 0.25, 0.25), 0.2)
-        tween.chain().tween_property(%Sprite2D, "modulate", Color(1, 1, 1), 0.2)
+        tween.chain().tween_property(%Sprite2D, "modulate", base_color, 0.2)
     return tween
