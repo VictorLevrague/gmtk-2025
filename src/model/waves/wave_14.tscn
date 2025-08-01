@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://nqrt6hnmg7bc"]
+
+[ext_resource type="Script" uid="uid://ca4gkdpb7dcjh" path="res://src/model/waves/wave.gd" id="1_1276a"]
+[ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="2_hgi78"]
+[ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/canon_enemy.tscn" id="4_1276a"]
+[ext_resource type="PackedScene" uid="uid://caq5a0k6ful7y" path="res://src/model/enemies/fast_shooter_enemy.tscn" id="5_qgn6p"]
+[ext_resource type="PackedScene" uid="uid://cmovm8r4bh6b2" path="res://src/model/enemies/canon_enemy_upgrade.tscn" id="5_t30to"]
+
+[node name="Wave14" type="Node"]
+script = ExtResource("1_1276a")
+wave_duration = 40.0
+
+[node name="EnemySpawner" parent="." instance=ExtResource("2_hgi78")]
+position = Vector2(8, 423)
+enemies = Array[PackedScene]([ExtResource("5_t30to"), ExtResource("4_1276a")])
+spawn_distance = 100
+spawn_speed = 6.0
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("2_hgi78")]
+position = Vector2(1620, 90)
+enemies = Array[PackedScene]([ExtResource("5_t30to")])
+spawn_distance = 100
+spawn_speed = 8.0
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("2_hgi78")]
+position = Vector2(1910, 765)
+enemies = Array[PackedScene]([ExtResource("5_qgn6p")])
+spawn_distance = 100
+spawn_speed = 8.0
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("2_hgi78")]
+position = Vector2(345, 1094)
+enemies = Array[PackedScene]([ExtResource("5_t30to")])
+spawn_distance = 100
+spawn_speed = 8.5
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("2_hgi78")]
+position = Vector2(1259, 1059)
+enemies = Array[PackedScene]([ExtResource("5_t30to"), ExtResource("4_1276a")])
+spawn_distance = 100
+spawn_speed = 12.0
