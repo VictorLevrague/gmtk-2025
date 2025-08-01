@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v5atxsiwhva8"
-path="res://.godot/imported/squid.png-4ffbb0b9052708fcd8f561dd82f88afd.ctex"
+uid="uid://bom5tpj3r0k0c"
+path="res://.godot/imported/crabe.png-94b0f798bb17a7eacf6a8f178d70138c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/squid.png"
-dest_files=["res://.godot/imported/squid.png-4ffbb0b9052708fcd8f561dd82f88afd.ctex"]
+source_file="res://assets/icons/crabe.png"
+dest_files=["res://.godot/imported/crabe.png-94b0f798bb17a7eacf6a8f178d70138c.ctex"]
 
 [params]
 
