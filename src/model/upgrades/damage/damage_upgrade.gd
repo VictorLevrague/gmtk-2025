@@ -1,5 +1,7 @@
 extends Upgrade
 
+var texture: Texture2D = load("res://assets/icons/dumbbell.png")
+var name: String = "Loop Damage"
 @export var damage_upgrade: int = 20
 
 func upgrade_function(player: Player):

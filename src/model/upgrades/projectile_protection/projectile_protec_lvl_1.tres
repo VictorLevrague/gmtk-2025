@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://mc6gud54dlaq"]
+
+[ext_resource type="Script" uid="uid://p71yxaclafwj" path="res://src/model/upgrades/projectile_protection/projectile_protection_upgrade.gd" id="1_7xaw1"]
+[ext_resource type="Resource" uid="uid://j1gqv2nw8ocj" path="res://src/model/upgrades/projectile_protection/projectile_protec_lvl_2.tres" id="3_t05bs"]
+
+[resource]
+script = ExtResource("1_7xaw1")
+projectile_protection_increase = 1
+level = 1
+unlocked_upgrade = ExtResource("3_t05bs")
+metadata/_custom_type_script = "uid://dx47xysjgvvcl"

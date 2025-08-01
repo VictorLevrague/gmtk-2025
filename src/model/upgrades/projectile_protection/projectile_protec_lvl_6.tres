@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ck8oewfo370ts"]
+
+[ext_resource type="Script" uid="uid://p71yxaclafwj" path="res://src/model/upgrades/projectile_protection/projectile_protection_upgrade.gd" id="1_n8ly6"]
+
+[resource]
+script = ExtResource("1_n8ly6")
+projectile_protection_increase = 1
+name = "Projectile Protection"
+level = 6
+metadata/_custom_type_script = "uid://dx47xysjgvvcl"

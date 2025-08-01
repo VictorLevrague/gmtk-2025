@@ -34,6 +34,7 @@ var coins: int = 0:
         emit_signal("player_coins_changed", coins)
 
 var damage_per_loop: float = 100
+var maximum_projectile_hit_before_break: int = 1
 
 func _ready() -> void:
     Signals.end_wave.connect(full_heal)
