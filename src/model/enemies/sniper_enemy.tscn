@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwqufs20qgau"]
+
+[ext_resource type="Script" uid="uid://dbycdl8x7i8i" path="res://src/model/enemies/enemy.gd" id="1_qnfj0"]
+[ext_resource type="Texture2D" uid="uid://b3likkenescit" path="res://assets/icons/poissong.png" id="2_seaw8"]
+[ext_resource type="PackedScene" uid="uid://dy0q741ok1rvl" path="res://src/model/projectiles/projectile_spawner.tscn" id="3_ciwop"]
+[ext_resource type="PackedScene" uid="uid://c60ygudbrgmf7" path="res://src/model/projectiles/sniper_projectile.tscn" id="4_qnfj0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmh3p"]
+radius = 41.8523
+height = 83.7047
+
+[node name="SniperEnemy" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_qnfj0")
+speed = 25.0
+max_health = 300
+damage = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0.658824, 0.180392, 1)
+position = Vector2(1.79985, 0.055069)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_seaw8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.55264, 0.410522)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bmh3p")
+
+[node name="ProjectileSpawner" parent="." instance=ExtResource("3_ciwop")]
+position = Vector2(55.6345, -2.4837)
+projectile_scene = ExtResource("4_qnfj0")
+shoot_frequency = 7.0
