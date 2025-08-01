@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_x0hlo")
 max_line_length = 400
-name = "Mana Lvl. 10"
+name = "Mana"
+level = 10
 texture = ExtResource("2_j6snp")
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"

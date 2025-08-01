@@ -7,7 +7,8 @@
 [resource]
 script = ExtResource("1_3qyrq")
 max_line_length = 400
-name = "Mana Lvl. 3"
+name = "Mana"
+level = 3
 texture = ExtResource("2_s78hv")
 unlocked_upgrade = ExtResource("3_3qyrq")
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"

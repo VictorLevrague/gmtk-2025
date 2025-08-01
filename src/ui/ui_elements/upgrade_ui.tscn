@@ -26,7 +26,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="UpgradeUI" type="Panel"]
 custom_minimum_size = Vector2(305, 290)
 offset_right = 305.0
-offset_bottom = 290.0
+offset_bottom = 360.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("1_7v2rp")
@@ -49,6 +49,13 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Upgrade name"
+horizontal_alignment = 1
+
+[node name="Level" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Level 0"
 horizontal_alignment = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer"]

@@ -7,7 +7,8 @@
 [resource]
 script = ExtResource("1_goquf")
 max_health_gain = 80
-name = "Health Lvl. 5"
+name = "Health"
+level = 5
 texture = ExtResource("2_med2u")
 unlocked_upgrade = ExtResource("3_med2u")
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"

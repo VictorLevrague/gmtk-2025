@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://7n227y8v8gqh"]
+[gd_scene load_steps=8 format=3 uid="uid://7n227y8v8gqh"]
 
 [ext_resource type="Script" uid="uid://cawcaaccwj6vt" path="res://src/ui/menus/shop.gd" id="1_nj1vb"]
 [ext_resource type="Script" uid="uid://dx47xysjgvvcl" path="res://src/model/upgrades/upgrade.gd" id="2_gxqn3"]
 [ext_resource type="PackedScene" uid="uid://in3d1ruusblo" path="res://src/ui/ui_elements/upgrade_ui.tscn" id="2_q2uod"]
 [ext_resource type="Resource" uid="uid://r1btr8f2sreg" path="res://src/model/upgrades/health/health_lvl_1.tres" id="3_gprgp"]
 [ext_resource type="Resource" uid="uid://bm537kvg66xr6" path="res://src/model/upgrades/loop/line_length_lvl_1.tres" id="4_uwl6s"]
+[ext_resource type="Resource" uid="uid://bto0dpe12hshw" path="res://src/model/upgrades/damage/damage_lvl_1.tres" id="5_5vpnt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj1vb"]
 bg_color = Color(0.0666667, 0.0666667, 0.0666667, 0.737255)
@@ -17,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nj1vb")
-possible_upgrades = Array[ExtResource("2_gxqn3")]([ExtResource("3_gprgp"), ExtResource("4_uwl6s")])
+possible_upgrades = Array[ExtResource("2_gxqn3")]([ExtResource("3_gprgp"), ExtResource("4_uwl6s"), ExtResource("5_5vpnt")])
 
 [node name="Background2" type="Panel" parent="."]
 layout_mode = 1
