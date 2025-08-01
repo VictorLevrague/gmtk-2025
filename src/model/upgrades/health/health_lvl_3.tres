@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://thdcv5vnsfto"]
+
+[ext_resource type="Script" uid="uid://cwqtqyq2frtyg" path="res://src/model/upgrades/health/health_upgrade.gd" id="1_xxnvn"]
+[ext_resource type="Texture2D" uid="uid://ce5htseikqnqd" path="res://assets/icons/coeurs.png" id="2_g87cb"]
+[ext_resource type="Resource" uid="uid://ccff6njgpv7ky" path="res://src/model/upgrades/health/health_lvl_4.tres" id="3_g87cb"]
+
+[resource]
+script = ExtResource("1_xxnvn")
+max_health_gain = 80
+name = "Health Lvl. 3"
+texture = ExtResource("2_g87cb")
+unlocked_upgrade = ExtResource("3_g87cb")
+metadata/_custom_type_script = "uid://dx47xysjgvvcl"

@@ -2,9 +2,6 @@ extends Line2D
 
 const MINIMUM_DISTANCE_BETWEEN_POINTS = 0.5
 
-var maximum_line_length = 2000
-var mana_cost_per_length = 0.01
-
 @export var player: Player
 
 func _process(delta):
@@ -23,8 +20,8 @@ func _process(delta):
                     if player:
                         var added_length = new_end.distance_to(new_start)
                         player.mana -= added_length
-                    while get_total_line_length() >= maximum_line_length:
-                        remove_point_and_collision(0)
+                        while get_total_line_length() >= player.max_mana:
+                            remove_point_and_collision(0)
     if Input.is_action_just_released("left_mouse_click"):
         clear_line()
         player.regen_mana()

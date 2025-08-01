@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ctl4s8nx3las7"]
+
+[ext_resource type="Script" uid="uid://cwqtqyq2frtyg" path="res://src/model/upgrades/health/health_upgrade.gd" id="1_4wm34"]
+[ext_resource type="Texture2D" uid="uid://ce5htseikqnqd" path="res://assets/icons/coeurs.png" id="2_3sdai"]
+
+[resource]
+script = ExtResource("1_4wm34")
+max_health_gain = 80
+name = "Health Lvl. 9"
+texture = ExtResource("2_3sdai")
+metadata/_custom_type_script = "uid://dx47xysjgvvcl"
