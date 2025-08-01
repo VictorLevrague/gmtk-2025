@@ -10,6 +10,9 @@ extends Node2D
         spawn_speed = value
         %SpawnerTimer.wait_time = value
 
+func _ready() -> void:
+    %SpawnerTimer.timeout.connect(_on_timer_timeout)
+
 func _on_timer_timeout() -> void:
     spawn(get_random_position())
 

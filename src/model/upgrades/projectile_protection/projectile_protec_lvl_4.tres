@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_1mdu4")
-projectile_protection_increase = 1
+projectile_protection_increase = 2
 level = 4
 unlocked_upgrade = ExtResource("3_qokl5")
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"

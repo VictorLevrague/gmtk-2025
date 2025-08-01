@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dce18yypthenr"]
 
 [ext_resource type="Script" uid="uid://cyk6yemapx7ex" path="res://src/model/waves/wave_manager.gd" id="1_m8tya"]
-[ext_resource type="Script" uid="uid://bpfjghi51wngx" path="res://src/model/enemies/wave_timer.gd" id="2_m8tya"]
+[ext_resource type="Script" uid="uid://bpfjghi51wngx" path="res://src/model/waves/wave_timer.gd" id="2_m8tya"]
 [ext_resource type="PackedScene" uid="uid://jjrwf0o12eq0" path="res://src/model/waves/wave_1.tscn" id="2_q86uv"]
 
 [node name="WaveManager" type="Node2D"]

@@ -31,7 +31,7 @@ func new_wave() -> void:
 func _on_wave_timer_timeout() -> void:
     %WaveTimer.stop()
     stop_all_enemy_spawn_timers()
-    if wave_id == 19:
+    if wave_id == 9:
         Signals.emit_signal("victory")
     else:
         Signals.emit_signal("end_wave")

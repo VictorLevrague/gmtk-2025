@@ -11,7 +11,7 @@ height = 209.563
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_p54b5")
-speed = 15.0
+speed = 25.0
 max_health = 500
 damage = 20.0
 
