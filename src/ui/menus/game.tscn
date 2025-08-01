@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_to1yy"]
 [ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="2_to1yy"]
 [ext_resource type="PackedScene" uid="uid://bxpk6eksitrar" path="res://src/model/player.tscn" id="3_wayuo"]
-[ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="4_vgh4s"]
+[ext_resource type="PackedScene" uid="uid://dce18yypthenr" path="res://src/model/waves/wave_manager.tscn" id="5_jrwaj"]
 [ext_resource type="PackedScene" uid="uid://b854xt5qwqctp" path="res://src/ui/game_ui.tscn" id="5_vqht0"]
 [ext_resource type="PackedScene" uid="uid://7n227y8v8gqh" path="res://src/ui/menus/shop.tscn" id="6_to1yy"]
 [ext_resource type="Script" uid="uid://dr5av1apne3iu" path="res://src/ui/menus/game_over.gd" id="7_vqht0"]
@@ -51,12 +51,12 @@ player = NodePath("../Player")
 [node name="Player" parent="GameComponents" instance=ExtResource("3_wayuo")]
 position = Vector2(960, 540)
 
-[node name="EnemySpawner" parent="GameComponents" instance=ExtResource("4_vgh4s")]
-wave_duration = 1.0
+[node name="WaveManager" parent="GameComponents" instance=ExtResource("5_jrwaj")]
 
 [node name="ShopLayer" type="CanvasLayer" parent="."]
 
 [node name="Shop" parent="ShopLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_to1yy")]
+visible = false
 offset_left = 88.0
 offset_top = 201.0
 offset_right = -136.0

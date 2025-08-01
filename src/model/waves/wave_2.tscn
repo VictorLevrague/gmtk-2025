@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0ee8xxky02tf"]
+
+[ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="1_nexpy"]
+[ext_resource type="Script" uid="uid://ca4gkdpb7dcjh" path="res://src/model/waves/wave.gd" id="1_stdsh"]
+[ext_resource type="PackedScene" uid="uid://cjngf21xcrnng" path="res://src/model/enemies/basic_enemy.tscn" id="2_stdsh"]
+[ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/canon_enemy.tscn" id="3_5xddj"]
+
+[node name="Wave2" type="Node"]
+script = ExtResource("1_stdsh")
+wave_duration = 60.0
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_nexpy")]
+position = Vector2(8, 423)
+enemies = Array[PackedScene]([ExtResource("2_stdsh")])
+spawn_distance = 100
+spawn_speed = 7.0
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("1_nexpy")]
+position = Vector2(1620, 90)
+enemies = Array[PackedScene]([ExtResource("3_5xddj")])
+spawn_distance = 100
+spawn_speed = 8.0
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("1_nexpy")]
+position = Vector2(1910, 765)
+enemies = Array[PackedScene]([ExtResource("2_stdsh")])
+spawn_distance = 100
+spawn_speed = 5.0
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("1_nexpy")]
+position = Vector2(345, 1094)
+enemies = Array[PackedScene]([ExtResource("3_5xddj")])
+spawn_distance = 100
+spawn_speed = 7.5

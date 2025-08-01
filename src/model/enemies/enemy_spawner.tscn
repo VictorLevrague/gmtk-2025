@@ -1,23 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2jw008k6maxe"]
+[gd_scene load_steps=3 format=3 uid="uid://b2jw008k6maxe"]
 
 [ext_resource type="Script" uid="uid://crobp52n616oh" path="res://src/model/enemies/enemy_spawner.gd" id="1_47vej"]
-[ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/canon_enemy.tscn" id="3_sixl8"]
-[ext_resource type="Script" uid="uid://bpfjghi51wngx" path="res://src/model/enemies/wave_timer.gd" id="4_mwp58"]
+[ext_resource type="Texture2D" uid="uid://beajdywxmax6p" path="res://assets/icons/bulles.png" id="2_fynxu"]
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_47vej")
-enemies = Array[PackedScene]([ExtResource("3_sixl8")])
 
 [node name="SpawnerTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 1.5
 
-[node name="WaveTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-script = ExtResource("4_mwp58")
-
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
+[node name="Bulles" type="Sprite2D" parent="."]
+position = Vector2(-1.15224, 0.63895)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_fynxu")
+
 [connection signal="timeout" from="SpawnerTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

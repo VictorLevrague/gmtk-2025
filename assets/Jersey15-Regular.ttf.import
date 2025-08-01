@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://2rtoq7a74d5n"
-path="res://.godot/imported/YuseiMagic-Regular.ttf-6427daea578537d3e41e46259b8b3e64.fontdata"
+uid="uid://yrtse3jpv4wt"
+path="res://.godot/imported/Jersey15-Regular.ttf-eec81013ecd6a08d799092b9289e0815.fontdata"
 
 [deps]
 
-source_file="res://assets/YuseiMagic-Regular.ttf"
-dest_files=["res://.godot/imported/YuseiMagic-Regular.ttf-6427daea578537d3e41e46259b8b3e64.fontdata"]
+source_file="res://assets/Jersey15-Regular.ttf"
+dest_files=["res://.godot/imported/Jersey15-Regular.ttf-eec81013ecd6a08d799092b9289e0815.fontdata"]
 
 [params]
 
