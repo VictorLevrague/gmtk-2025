@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbiiiabspp0jd"]
+
+[ext_resource type="Script" uid="uid://dbycdl8x7i8i" path="res://src/model/enemies/enemy.gd" id="1_nj4rg"]
+[ext_resource type="Texture2D" uid="uid://dkt3y4mxsasel" path="res://assets/icons/requin.png" id="2_nj4rg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_asy51"]
+radius = 42.0
+height = 169.0
+
+[node name="FastEnemy" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_nj4rg")
+speed = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_asy51")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.708222, 0.763824, 0.759858, 1)
+position = Vector2(-7.99997, -0.999998)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_nj4rg")

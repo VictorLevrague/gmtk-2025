@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ba3dgk3thuhmt"]
 
-[ext_resource type="Script" uid="uid://dslph7nnbbtcl" path="res://src/model/mechanics/projectile.gd" id="1_y1kf3"]
+[ext_resource type="Script" uid="uid://dslph7nnbbtcl" path="res://src/model/projectiles/projectile.gd" id="1_y1kf3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_q6yms"]
 

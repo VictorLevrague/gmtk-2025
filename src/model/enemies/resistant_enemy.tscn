@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxrcx8fmr1vqb"]
 
 [ext_resource type="Script" uid="uid://dbycdl8x7i8i" path="res://src/model/enemies/enemy.gd" id="1_p54b5"]
-[ext_resource type="Texture2D" uid="uid://12hvoih0un7p" path="res://assets/icons/crab.png" id="2_p54b5"]
+[ext_resource type="Texture2D" uid="uid://bom5tpj3r0k0c" path="res://assets/icons/crabe.png" id="2_p54b5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s4a4e"]
-radius = 98.8311
-height = 231.237
+radius = 84.0361
+height = 209.563
 
 [node name="ResistantEnemy" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
 collision_layer = 2
@@ -15,13 +15,14 @@ speed = 15.0
 max_health = 500
 damage = 20.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(1.26525, 1.13619)
-texture = ExtResource("2_p54b5")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_s4a4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0.422572, 0.311394, 1)
+position = Vector2(0.25351, -3.35455)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_p54b5")

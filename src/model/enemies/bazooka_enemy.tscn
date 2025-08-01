@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckcgsuip2fqfm"]
+
+[ext_resource type="Script" uid="uid://dbycdl8x7i8i" path="res://src/model/enemies/enemy.gd" id="1_pv15g"]
+[ext_resource type="PackedScene" uid="uid://dy0q741ok1rvl" path="res://src/model/projectiles/projectile_spawner.tscn" id="3_vbwxm"]
+[ext_resource type="PackedScene" uid="uid://bntug0ebhgmwd" path="res://src/model/projectiles/large_projectile.tscn" id="4_pv15g"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_66ufc"]
+load_path = "res://.godot/imported/squid.png-4ffbb0b9052708fcd8f561dd82f88afd.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmh3p"]
+radius = 55.0358
+height = 233.968
+
+[node name="EnemyWithProjectiles" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_pv15g")
+speed = 15.0
+max_health = 500
+damage = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0.290196, 0.85098, 1)
+position = Vector2(1.31998, 4.77833e-06)
+rotation = 1.5708
+scale = Vector2(0.257708, 0.458964)
+texture = SubResource("CompressedTexture2D_66ufc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bmh3p")
+
+[node name="ProjectileSpawner" parent="." instance=ExtResource("3_vbwxm")]
+projectile_scene = ExtResource("4_pv15g")
+shoot_frequency = 2.0

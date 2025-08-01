@@ -12,13 +12,14 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_ugpo3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.208373, 0.152834)
-texture = ExtResource("2_ugpo3")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_asy51")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.655049, 0.6833, 1, 1)
+position = Vector2(-1.04382, 2.50459)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ugpo3")
