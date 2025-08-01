@@ -28,7 +28,7 @@ func new_wave() -> void:
     %SpawnerTimer.start()
 
 func spawn(position: Vector2):
-    if %Enemies.get_child_count() < maximum_nb_enemies_on_screen:
+    if %Enemies.get_child_count() < maximum_nb_enemies_on_screen and enemies.size():
         var enemy_instance = enemies[randi_range(0, enemies.size() - 1)].instantiate()
         enemy_instance.position = position
         %Enemies.add_child(enemy_instance)

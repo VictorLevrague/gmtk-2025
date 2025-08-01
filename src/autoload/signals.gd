@@ -7,3 +7,5 @@ signal update_max_mana(mana: float)
 signal end_wave
 signal new_wave
 signal game_over
+
+signal player_upgrade(upgrade: Upgrade)

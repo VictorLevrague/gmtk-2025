@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cac3cbt58pikv"]
+
+[ext_resource type="Script" uid="uid://dbycdl8x7i8i" path="res://src/model/enemies/enemy.gd" id="1_nx5ne"]
+[ext_resource type="Texture2D" uid="uid://kvnqmyvy6kjn" path="res://assets/icons/limace.png" id="2_met1r"]
+[ext_resource type="PackedScene" uid="uid://dy0q741ok1rvl" path="res://src/model/projectiles/projectile_spawner.tscn" id="2_yki4w"]
+[ext_resource type="PackedScene" uid="uid://ve1gko0cfpbg" path="res://src/model/projectiles/large_slow_projectile.tscn" id="4_yki4w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmh3p"]
+radius = 18.6386
+height = 93.655
+
+[node name="CoverEnemy" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_nx5ne")
+speed = 15.0
+max_health = 500
+damage = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.709425, 0.440307, 0.708359, 1)
+position = Vector2(3.3902, 2.51733)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_met1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bmh3p")
+
+[node name="ProjectileSpawner" parent="." instance=ExtResource("2_yki4w")]
+projectile_scene = ExtResource("4_yki4w")
+shoot_frequency = 3.5

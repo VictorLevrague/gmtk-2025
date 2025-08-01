@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://fue5w6r26opc"]
+
+[ext_resource type="Script" uid="uid://dbycdl8x7i8i" path="res://src/model/enemies/enemy.gd" id="1_dbp54"]
+[ext_resource type="Texture2D" uid="uid://bvnfngqu4v4sd" path="res://assets/icons/oursin.png" id="2_dbp54"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s4a4e"]
+radius = 49.0305
+height = 117.179
+
+[node name="ResistantEnemy" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_dbp54")
+speed = 10.0
+max_health = 1000
+damage = 20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2.03085, -0.871735)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_dbp54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s4a4e")
