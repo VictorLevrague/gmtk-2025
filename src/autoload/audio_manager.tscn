@@ -1,20 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bav7nai4tyke7"]
+[gd_scene load_steps=5 format=3 uid="uid://bav7nai4tyke7"]
 
 [ext_resource type="Script" uid="uid://ct1tlatdy3y21" path="res://src/autoload/audio_manager.gd" id="1_pcgf1"]
-[ext_resource type="AudioStream" uid="uid://bt6ttojy1n2yb" path="res://assets/sound/SFX/bell.wav" id="3_pcgf1"]
+[ext_resource type="AudioStream" uid="uid://ciss1xrphttwu" path="res://assets/sound/music/Chad Crouch - Action.mp3" id="2_mk1sw"]
+[ext_resource type="AudioStream" uid="uid://dotpt0kmkb1oo" path="res://assets/sound/SFX/pop_sound_1.wav" id="3_mk1sw"]
+[ext_resource type="AudioStream" uid="uid://c4hfrqn5f6knf" path="res://assets/sound/SFX/pop_sound_2.wav" id="4_pcgf1"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_pcgf1")
+first_music = ExtResource("2_mk1sw")
 
 [node name="Musics" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Musics"]
 unique_name_in_owner = true
+stream = ExtResource("2_mk1sw")
 bus = &"Music"
 
 [node name="Sfx" type="Node" parent="."]
 
-[node name="ButtonClick" type="AudioStreamPlayer" parent="Sfx"]
+[node name="ButtonClick1" type="AudioStreamPlayer" parent="Sfx"]
 unique_name_in_owner = true
-stream = ExtResource("3_pcgf1")
+stream = ExtResource("3_mk1sw")
+bus = &"SFX"
+
+[node name="ButtonClick2" type="AudioStreamPlayer" parent="Sfx"]
+unique_name_in_owner = true
+stream = ExtResource("4_pcgf1")
 bus = &"SFX"

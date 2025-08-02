@@ -10,4 +10,5 @@ extends Panel
             %Icon.texture = upgrade.texture
 
 func _on_button_pressed() -> void:
+    AudioManager.get_node("%ButtonClick2").play()
     Signals.emit_signal("player_upgrade", upgrade)

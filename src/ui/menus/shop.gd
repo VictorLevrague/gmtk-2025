@@ -30,6 +30,7 @@ func init_upgrades():
 
 func _on_next_wave_button_pressed() -> void:
     hide()
+    AudioManager.get_node("%ButtonClick1").play()
     Signals.emit_signal("new_wave")
 
 func player_upgrade(upgrade: Upgrade):
