@@ -21,14 +21,15 @@ damage = 30.0
 unique_name_in_owner = true
 modulate = Color(0.733333, 0.694118, 0.886275, 1)
 position = Vector2(-0.19635, -0.893326)
+rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_pv15g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.4263, 0)
-rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bmh3p")
 
 [node name="ProjectileSpawner" parent="." instance=ExtResource("3_vbwxm")]
+position = Vector2(69.0916, -3.16106)
 projectile_scene = ExtResource("4_pv15g")
 shoot_frequency = 10.0

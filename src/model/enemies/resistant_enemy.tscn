@@ -11,18 +11,17 @@ height = 209.563
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_p54b5")
-speed = 25.0
 max_health = 500
 damage = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
-rotation = 1.5708
 shape = SubResource("CapsuleShape2D_s4a4e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(1, 0.422572, 0.311394, 1)
 position = Vector2(0.25351, -3.35455)
+rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_p54b5")
