@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b854xt5qwqctp"]
+[gd_scene load_steps=12 format=3 uid="uid://b854xt5qwqctp"]
 
 [ext_resource type="Script" uid="uid://de25b68ragips" path="res://src/ui/menus/game_ui.gd" id="1_jdnd6"]
 [ext_resource type="StyleBox" uid="uid://dn5uq2hhhe2ib" path="res://src/ui/custom_themes/custom_progress_bar_panel.tres" id="2_uoilq"]
 [ext_resource type="Script" uid="uid://xtcw2ihqr3b2" path="res://src/ui/ui_elements/custom_liquid_bar.gd" id="3_blig7"]
 [ext_resource type="Texture2D" uid="uid://dm0mr1gu326gg" path="res://assets/icons/money-bag.png" id="4_7ft61"]
+[ext_resource type="Texture2D" uid="uid://blfdv33dxhjib" path="res://assets/icons/dumbbell.png" id="4_xtgum"]
+[ext_resource type="Texture2D" uid="uid://beajdywxmax6p" path="res://assets/icons/bulles.png" id="5_7ft61"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2llbp"]
 bg_color = Color(0.813294, 0.695152, 0.436256, 1)
@@ -90,24 +92,28 @@ anchor_right = 1.0
 offset_left = 21.0
 offset_top = 19.0
 offset_right = -1218.0
-offset_bottom = 139.0
+offset_bottom = 155.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2llbp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StatsPanel"]
+[node name="StatsContainer" type="HBoxContainer" parent="CanvasLayer/StatsPanel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = 9.0
-offset_right = -18.0
-offset_bottom = -9.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -51.0
+offset_right = 547.0
+offset_bottom = 51.0
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Health" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer" node_paths=PackedStringArray("label")]
+[node name="MainStats" type="VBoxContainer" parent="CanvasLayer/StatsPanel/StatsContainer"]
+custom_minimum_size = Vector2(533, 102)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Health" type="Panel" parent="CanvasLayer/StatsPanel/StatsContainer/MainStats" node_paths=PackedStringArray("label")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_2llbp")
 layout_mode = 2
@@ -117,7 +123,7 @@ script = ExtResource("3_blig7")
 base_text = "Health"
 label = NodePath("HealthLabel")
 
-[node name="HealthLabel" type="Label" parent="CanvasLayer/StatsPanel/VBoxContainer/Health"]
+[node name="HealthLabel" type="Label" parent="CanvasLayer/StatsPanel/StatsContainer/MainStats/Health"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -131,7 +137,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Health"
 
-[node name="Panel" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer/Health"]
+[node name="Panel" type="Panel" parent="CanvasLayer/StatsPanel/StatsContainer/MainStats/Health"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -142,7 +148,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
 
-[node name="Mana" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer" node_paths=PackedStringArray("label")]
+[node name="Mana" type="Panel" parent="CanvasLayer/StatsPanel/StatsContainer/MainStats" node_paths=PackedStringArray("label")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_hhle7")
 layout_mode = 2
@@ -152,7 +158,7 @@ script = ExtResource("3_blig7")
 base_text = "Mana"
 label = NodePath("Label")
 
-[node name="Label" type="Label" parent="CanvasLayer/StatsPanel/VBoxContainer/Mana"]
+[node name="Label" type="Label" parent="CanvasLayer/StatsPanel/StatsContainer/MainStats/Mana"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -166,7 +172,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Mana"
 
-[node name="Panel" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer/Mana"]
+[node name="Panel" type="Panel" parent="CanvasLayer/StatsPanel/StatsContainer/MainStats/Mana"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -176,6 +182,37 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
+
+[node name="AdditionalStats" type="VBoxContainer" parent="CanvasLayer/StatsPanel/StatsContainer"]
+layout_mode = 2
+
+[node name="Strength" type="HBoxContainer" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats"]
+layout_mode = 2
+
+[node name="StrengthTexture" type="TextureRect" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/Strength"]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+texture = ExtResource("4_xtgum")
+expand_mode = 1
+
+[node name="StrengthLabel" type="Label" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/Strength"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="ProjectileProtection" type="HBoxContainer" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats"]
+layout_mode = 2
+
+[node name="ProjectileTexture" type="TextureRect" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/ProjectileProtection"]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+texture = ExtResource("5_7ft61")
+expand_mode = 1
+
+[node name="ProtectionLabel" type="Label" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/ProjectileProtection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
 
 [node name="WaveInfo" type="Control" parent="CanvasLayer"]
 layout_mode = 3

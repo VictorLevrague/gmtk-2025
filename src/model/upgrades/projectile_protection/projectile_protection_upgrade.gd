@@ -7,3 +7,4 @@ var name: String = "Projectile Protection"
 
 func upgrade_function(player: Player):
     player.maximum_projectile_hit_before_break += projectile_protection_increase
+    Signals.emit_signal("update_protection", level)

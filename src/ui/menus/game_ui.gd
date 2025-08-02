@@ -9,6 +9,8 @@ func _ready() -> void:
         player.player_coins_changed.connect(update_coins)
         Signals.update_max_health.connect(update_max_health)
         Signals.update_max_mana.connect(update_max_mana)
+        Signals.update_damage.connect(update_damage)
+        Signals.update_protection.connect(update_protection)
         %Health.maximum = player.max_health
         %Mana.maximum = player.max_mana #update when stat is modified
         %Health.set_and_animate(player.max_health)
@@ -31,3 +33,9 @@ func update_max_health(max_health: float):
 
 func update_max_mana(max_mana: float):
     %Mana.maximum = max_mana
+
+func update_damage(damage_lvl: int):
+    %StrengthLabel.text = str(damage_lvl)
+
+func update_protection(damage_lvl: int):
+    %ProtectionLabel.text = str(damage_lvl)

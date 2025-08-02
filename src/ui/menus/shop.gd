@@ -44,6 +44,7 @@ func player_upgrade(upgrade: Upgrade):
 func disable_upgrade_buttons(are_disabled: bool):
     for upgrade_ui in %UpgradeContainer.get_children():
         upgrade_ui.get_node("%Button").disabled = are_disabled
+        upgrade_ui.stop_animation()
 
 func clear_upgrade_container():
     for upgrade_ui in %UpgradeContainer.get_children():

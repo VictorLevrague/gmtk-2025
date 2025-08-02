@@ -8,5 +8,7 @@ signal end_wave
 signal new_wave
 signal game_over
 signal victory
+signal update_damage(level: int)
+signal update_protection(level: int)
 
 signal player_upgrade(upgrade: Upgrade)
