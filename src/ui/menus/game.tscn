@@ -254,6 +254,7 @@ script = ExtResource("8_vgh4s")
 [node name="TransitionLayer" type="CanvasLayer" parent="."]
 
 [node name="TransitionScreen" type="ColorRect" parent="TransitionLayer"]
+visible = false
 modulate = Color(0, 0, 0.235294, 1)
 anchors_preset = 15
 anchor_right = 1.0
