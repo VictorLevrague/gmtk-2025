@@ -48,6 +48,7 @@ func _on_area_entered(area: Area2D) -> void:
 func take_damage(body: Node2D):
     if "damage" in body:
         health -= body.damage
+        AudioManager.get_node("%PlayerDamaged").play()
         body.queue_free()
 
 func full_heal():
