@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://e58qautsuvcy"]
 
 [ext_resource type="Script" uid="uid://ca4gkdpb7dcjh" path="res://src/model/waves/wave.gd" id="1_0vpnx"]
-[ext_resource type="PackedScene" uid="uid://ft46egj1h4it" path="res://src/model/waves/wave_10.tscn" id="2_uoiqw"]
+[ext_resource type="PackedScene" uid="uid://dyackxptcaaeq" path="res://src/model/waves/wave_19.tscn" id="2_uoiqw"]
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="3_ncbkt"]
 [ext_resource type="PackedScene" uid="uid://caq5a0k6ful7y" path="res://src/model/enemies/fast_shooter_enemy.tscn" id="4_kjokk"]
 [ext_resource type="PackedScene" uid="uid://hebtq2r1u5as" path="res://src/model/enemies/fast_enemy_upgrade.tscn" id="5_sf21o"]
