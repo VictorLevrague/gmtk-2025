@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0ygiwsp0lm4q"]
+
+[ext_resource type="StyleBox" uid="uid://dn5uq2hhhe2ib" path="res://src/ui/custom_themes/custom_progress_bar_panel.tres" id="1_qjt3d"]
+[ext_resource type="Script" uid="uid://xtcw2ihqr3b2" path="res://src/ui/ui_elements/custom_liquid_bar.gd" id="2_7fjl4"]
+[ext_resource type="StyleBox" path="res://src/ui/ui_elements/background_mana.tres" id="3_7fjl4"]
+
+[sub_resource type="Shader" id="Shader_7ft61"]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float HealthAmount : hint_range(0,1) = 0.8;
+uniform vec4 HealthColor : source_color = vec4(0.64,0.08,0.08,1.0);
+uniform float WaveSpeed : hint_range(0.01,10.0) = 5.0;
+uniform float WavePeriod : hint_range(0.1,10) = 3.0;
+uniform float WaveAmplitude : hint_range(0,0.35) = 0.25;
+
+void fragment()
+{
+    // vertical sine wave (varies with UV.y)
+    float sin_wave = sin( ( TIME + ( UV.y / WavePeriod ) ) * WaveSpeed );
+    float scaled_sin_wave = (sin_wave * 0.5) + 0.5;
+
+    // reduce amplitude near full/empty health
+    float wave_amp_scale = min(
+        smoothstep(1.0, 1.0 - WaveAmplitude, HealthAmount),
+        smoothstep(0.0, WaveAmplitude * 2.0, HealthAmount)
+    );
+
+    // wave-modified threshold
+    float wave_test_val = (1. - HealthAmount) - scaled_sin_wave * WaveAmplitude * wave_amp_scale;
+
+    // fill anchored on right; as HealthAmount decreases the filled region retreats leftward
+    float wave = UV.x < (1.0 - wave_test_val) ? 1.0 : 0.0;
+
+    COLOR.rgb = HealthColor.rgb;
+    COLOR.a = wave * HealthColor.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhle7"]
+shader = SubResource("Shader_7ft61")
+shader_parameter/HealthAmount = 0.994
+shader_parameter/HealthColor = Color(0.237034, 0.613863, 0.982241, 1)
+shader_parameter/WaveSpeed = 2.456
+shader_parameter/WavePeriod = 2.1
+shader_parameter/WaveAmplitude = 0.009
+
+[node name="ProgressBar" type="Panel"]
+material = SubResource("ShaderMaterial_hhle7")
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_qjt3d")
+script = ExtResource("2_7fjl4")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -15.5
+offset_right = 118.0
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Mana: x/100"
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_7fjl4")

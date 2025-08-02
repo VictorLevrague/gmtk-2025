@@ -107,26 +107,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Health" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer"]
+[node name="Health" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer" node_paths=PackedStringArray("label")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_2llbp")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_uoilq")
 script = ExtResource("3_blig7")
+base_text = "Health"
+label = NodePath("HealthLabel")
 
-[node name="Label" type="Label" parent="CanvasLayer/StatsPanel/VBoxContainer/Health"]
+[node name="HealthLabel" type="Label" parent="CanvasLayer/StatsPanel/VBoxContainer/Health"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 17.0
-offset_top = -27.5
-offset_right = 146.0
-offset_bottom = 27.5
+offset_left = 8.0
+offset_top = -15.5
+offset_right = 137.0
+offset_bottom = 15.5
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Health"
 
 [node name="Panel" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer/Health"]
@@ -140,26 +142,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hhle7")
 
-[node name="Mana" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer"]
+[node name="Mana" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer" node_paths=PackedStringArray("label")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_hhle7")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_uoilq")
 script = ExtResource("3_blig7")
+base_text = "Mana"
+label = NodePath("Label")
 
 [node name="Label" type="Label" parent="CanvasLayer/StatsPanel/VBoxContainer/Mana"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 17.0
-offset_top = -27.5
-offset_right = 126.0
-offset_bottom = 27.5
+offset_left = 8.0
+offset_top = -15.5
+offset_right = 117.0
+offset_bottom = 15.5
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Mana"
 
 [node name="Panel" type="Panel" parent="CanvasLayer/StatsPanel/VBoxContainer/Mana"]
