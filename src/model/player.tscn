@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxpk6eksitrar"]
 
-[ext_resource type="Texture2D" uid="uid://d3c20qymmkver" path="res://assets/sprites/tower_round.svg" id="1_cl45y"]
 [ext_resource type="Script" uid="uid://c48shjpet0yhn" path="res://src/model/player.gd" id="1_l6ogf"]
+[ext_resource type="Texture2D" uid="uid://db4tyo8jwas4r" path="res://assets/icons/chateau.png" id="2_l6ogf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6ogf"]
 radius = 59.0
@@ -13,12 +13,12 @@ script = ExtResource("1_l6ogf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-3.5, 0)
-scale = Vector2(1.75781, 1.89063)
-texture = ExtResource("1_cl45y")
+modulate = Color(0.875212, 0.737417, 0.752206, 1)
+position = Vector2(-0.999999, -1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_l6ogf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_l6ogf")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
