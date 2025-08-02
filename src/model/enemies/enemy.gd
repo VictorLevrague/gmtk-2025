@@ -12,6 +12,7 @@ var health: float = max_health:
         health = clamp(value, 0, max_health)
         if health <= 0:
             queue_free()
+            Signals.emit_signal("enemy_eliminated")
 @export var damage: float = 10
 @export var coins: int = 10
 

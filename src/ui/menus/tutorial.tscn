@@ -1,0 +1,261 @@
+[gd_scene load_steps=17 format=3 uid="uid://cy03pj3iphrtr"]
+
+[ext_resource type="Script" uid="uid://c7iog3qbjbu4r" path="res://src/ui/menus/tutorial.gd" id="1_8mo7a"]
+[ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="2_ajcga"]
+[ext_resource type="PackedScene" uid="uid://b854xt5qwqctp" path="res://src/ui/game_ui.tscn" id="3_3idu5"]
+[ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="4_oh5fe"]
+[ext_resource type="PackedScene" uid="uid://bxpk6eksitrar" path="res://src/model/player.tscn" id="5_dsj32"]
+[ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="8_wuta4"]
+[ext_resource type="Texture2D" uid="uid://c48dl27qr28kq" path="res://assets/icons/cog.png" id="9_tyo4r"]
+[ext_resource type="Script" uid="uid://042v75r6or48" path="res://src/ui/buttons/settings_texture_button.gd" id="10_p76rx"]
+[ext_resource type="Script" uid="uid://15rgs3frsj1j" path="res://src/ui/menus/continue_button.gd" id="11_2pmef"]
+[ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="12_bg47k"]
+[ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="12_bimhp"]
+[ext_resource type="Script" uid="uid://cqipchr6sf3y7" path="res://src/ui/menus/transition_screen.gd" id="15_hrhvq"]
+
+[sub_resource type="Shader" id="Shader_8mo7a"]
+code = "shader_type canvas_item;
+
+uniform vec2 wave_speed = vec2(0.05, 0.03);
+uniform float wave_scale : hint_range(0.1, 10.0) = 3.0;
+uniform float noise_strength : hint_range(0.0, 1.0) = 0.2;
+uniform float caustic_strength : hint_range(0.0, 1.0) = 0.3;
+uniform vec3 deep_color : source_color = vec3(0.02, 0.08, 0.25);
+uniform vec3 shallow_color : source_color = vec3(0.1, 0.3, 0.6);
+
+#define PI 3.141592653589793
+
+// 2D pseudo-random
+float hash(vec2 p) {
+    p = fract(p * vec2(123.34, 456.21));
+    p += dot(p, p + 78.233);
+    return fract(p.x * p.y);
+}
+
+// Simple value noise
+float noise(vec2 uv) {
+    vec2 i = floor(uv);
+    vec2 f = fract(uv);
+    // four corners
+    float a = hash(i);
+    float b = hash(i + vec2(1.0, 0.0));
+    float c = hash(i + vec2(0.0, 1.0));
+    float d = hash(i + vec2(1.0, 1.0));
+    // smoothstep interpolation
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+}
+
+// Fractal noise
+float fbm(vec2 uv) {
+    float v = 0.0;
+    float amp = 0.5;
+    float freq = 1.0;
+    for (int i = 0; i < 5; i++) {
+        v += amp * noise(uv * freq);
+        freq *= 2.0;
+        amp *= 0.5;
+    }
+    return v;
+}
+
+void fragment() {
+    // normalized UV (0..1)
+    vec2 uv = UV;
+
+    // base wave layers (slow sinusoidal)
+    float waves = sin((uv.x * wave_scale + TIME * wave_speed.x) * PI * 2.0)
+                * sin((uv.y * wave_scale + TIME * wave_speed.y) * PI * 2.0);
+    // soften and remap
+    waves = smoothstep(-0.6, 0.6, waves) * 0.5;
+
+    // add fractal noise for organic movement
+    float n = fbm(uv * wave_scale * 0.5 + TIME * 0.02);
+    n = (n - 0.5) * 2.0; // center
+    float wave_combo = waves + n * noise_strength;
+
+    // subtle UV distortion to simulate refraction
+    vec2 distort = vec2(
+        sin((uv.y + TIME * 0.1) * 10.0),
+        cos((uv.x + TIME * 0.09) * 10.0)
+    ) * 0.002 * wave_combo; // small
+    vec2 uv_distorted = uv + distort;
+
+    // depth-based gradient
+    vec3 base_color = mix(deep_color, shallow_color, uv_distorted.y * 1.2);
+    
+    // caustic-like light shimmer: low-frequency traveling pattern
+    float caustic = sin((uv.x * 6.0 + TIME * 0.8)) * sin((uv.y * 6.0 + TIME * 0.7));
+    caustic = pow(smoothstep(0.2, 1.0, caustic * 0.5 + 0.5), 2.0); // sharpen
+    caustic *= caustic_strength;
+
+    // final color combining waves and shimmer
+    vec3 color = base_color + vec3(caustic) * 0.2 + wave_combo * 0.05;
+
+    // optional vignette / darken edges (comment out if undesired)
+    float dist = distance(uv, vec2(0.5));
+    float vignette = smoothstep(0.8, 0.5, dist);
+    color *= vignette;
+
+    COLOR = vec4(color, 1.0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0of8p"]
+shader = SubResource("Shader_8mo7a")
+shader_parameter/wave_speed = Vector2(0.05, 0.03)
+shader_parameter/wave_scale = 4.32
+shader_parameter/noise_strength = 0.2
+shader_parameter/caustic_strength = 0.53
+shader_parameter/deep_color = Color(0.0834621, 0.206957, 0.535384, 1)
+shader_parameter/shallow_color = Color(0.0799292, 0.257277, 0.522899, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7v8e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pmef"]
+bg_color = Color(0.13678, 0.0337613, 0.190017, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8mo7a")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.945098, 0.803922, 0.760784, 1)
+z_index = -1000
+material = SubResource("ShaderMaterial_0of8p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ajcga")
+expand_mode = 1
+
+[node name="GameUILayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="GameUILayer" node_paths=PackedStringArray("player") instance=ExtResource("3_3idu5")]
+unique_name_in_owner = true
+z_index = -1
+player = NodePath("../../GameComponents/Player")
+
+[node name="GameComponents" type="Node" parent="."]
+
+[node name="LoopTool" parent="GameComponents" node_paths=PackedStringArray("player") instance=ExtResource("4_oh5fe")]
+unique_name_in_owner = true
+player = NodePath("../Player")
+
+[node name="Player" parent="GameComponents" instance=ExtResource("5_dsj32")]
+unique_name_in_owner = true
+position = Vector2(960, 540)
+
+[node name="OptionsLayer" type="CanvasLayer" parent="."]
+
+[node name="Options" parent="OptionsLayer" instance=ExtResource("8_wuta4")]
+unique_name_in_owner = true
+visible = false
+
+[node name="SettingsButton" type="TextureButton" parent="OptionsLayer"]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.933
+anchor_top = 0.873
+anchor_right = 0.997
+anchor_bottom = 0.993
+offset_left = 0.639893
+offset_top = 0.159973
+offset_right = -0.240112
+offset_bottom = -0.440063
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("9_tyo4r")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("10_p76rx")
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionScreen" type="ColorRect" parent="TransitionLayer"]
+visible = false
+modulate = Color(0, 0, 0.235294, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_hrhvq")
+
+[node name="TutorialLayer" type="CanvasLayer" parent="."]
+
+[node name="TutorialPanel" type="Panel" parent="TutorialLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = -279.0
+offset_right = 689.0
+offset_bottom = 264.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("12_bg47k")
+
+[node name="TutorialLabel" type="RichTextLabel" parent="TutorialLayer/TutorialPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 33.0
+offset_top = 42.0
+offset_right = 621.0
+offset_bottom = 479.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+
+[node name="ContinueButton" type="Button" parent="TutorialLayer/TutorialPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -222.0
+offset_top = -85.0
+offset_right = 222.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(164, 42)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h7v8e")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2pmef")
+theme_override_styles/hover = ExtResource("12_bg47k")
+theme_override_styles/pressed = ExtResource("12_bg47k")
+theme_override_styles/normal = ExtResource("12_bg47k")
+text = "Continue"
+script = ExtResource("11_2pmef")
+
+[node name="TutorialSpawner" parent="TutorialLayer/TutorialPanel" instance=ExtResource("12_bimhp")]
+unique_name_in_owner = true
+position = Vector2(1767, 378)
+maximum_nb_enemies_on_screen = 1
+spawn_distance = 0
+spawn_speed = 23.0
+
+[connection signal="pressed" from="OptionsLayer/SettingsButton" to="OptionsLayer/SettingsButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="TutorialLayer/TutorialPanel/ContinueButton" to="TutorialLayer/TutorialPanel/ContinueButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TutorialLayer/TutorialPanel/ContinueButton" to="TutorialLayer/TutorialPanel/ContinueButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="TutorialLayer/TutorialPanel/ContinueButton" to="." method="_on_continue_button_pressed"]

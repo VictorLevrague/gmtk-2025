@@ -10,5 +10,6 @@ signal game_over
 signal victory
 signal update_damage(level: int)
 signal update_protection(level: int)
+signal enemy_eliminated
 
 signal player_upgrade(upgrade: Upgrade)

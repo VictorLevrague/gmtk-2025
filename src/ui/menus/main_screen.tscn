@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://he0hve4tvnis"]
+[gd_scene load_steps=17 format=3 uid="uid://he0hve4tvnis"]
 
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_6esld"]
 [ext_resource type="Shader" uid="uid://liyy3rswu2an" path="res://src/ui/menus/background.gdshader" id="1_ydojc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cnxlk7adyetwc" path="res://src/ui/buttons/change_scene_button.gd" id="3_0253g"]
 [ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="3_ye5sf"]
 [ext_resource type="PackedScene" uid="uid://cu7fkk8unxjm7" path="res://src/ui/menus/game.tscn" id="4_0253g"]
+[ext_resource type="PackedScene" uid="uid://cy03pj3iphrtr" path="res://src/ui/menus/tutorial.tscn" id="6_gcvw4"]
 [ext_resource type="Texture2D" uid="uid://beajdywxmax6p" path="res://assets/icons/bulles.png" id="8_suuo2"]
 [ext_resource type="Texture2D" uid="uid://by7vkp5o5m2wb" path="res://assets/icons/GMTK_logo.png" id="9_7530n"]
 
@@ -93,8 +94,8 @@ layout_mode = 2
 offset_left = 481.0
 offset_top = 379.0
 offset_right = 1456.0
-offset_bottom = 572.0
-pivot_offset = Vector2(487, 96)
+offset_bottom = 539.0
+pivot_offset = Vector2(487, 80)
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ydojc")
@@ -105,14 +106,31 @@ text = "Play"
 script = ExtResource("3_0253g")
 next_scene = ExtResource("4_0253g")
 
+[node name="TutorialButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 480.0
+offset_top = 584.0
+offset_right = 1455.0
+offset_bottom = 744.0
+pivot_offset = Vector2(487, 80)
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ydojc")
+theme_override_styles/hover = ExtResource("2_pqdi3")
+theme_override_styles/pressed = ExtResource("2_pqdi3")
+theme_override_styles/normal = ExtResource("2_pqdi3")
+text = "Tutorial"
+script = ExtResource("3_0253g")
+next_scene = ExtResource("6_gcvw4")
+
 [node name="SettingsButton" type="Button" parent="."]
 z_index = 2
 layout_mode = 2
-offset_left = 481.0
-offset_top = 632.0
-offset_right = 1456.0
-offset_bottom = 826.0
-pivot_offset = Vector2(487, 97)
+offset_left = 480.0
+offset_top = 792.0
+offset_right = 1455.0
+offset_bottom = 952.0
+pivot_offset = Vector2(487, 80)
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 theme_override_styles/focus = SubResource("StyleBoxEmpty_suuo2")
@@ -172,6 +190,9 @@ texture = ExtResource("9_7530n")
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PlayButton" to="PlayButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="TutorialButton" to="TutorialButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TutorialButton" to="TutorialButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="TutorialButton" to="TutorialButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="SettingsButton" to="SettingsButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="SettingsButton" to="SettingsButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="SettingsButton" to="SettingsButton" method="_on_pressed"]
