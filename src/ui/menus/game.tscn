@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu7fkk8unxjm7"]
+[gd_scene load_steps=17 format=3 uid="uid://cu7fkk8unxjm7"]
 
+[ext_resource type="Shader" uid="uid://liyy3rswu2an" path="res://src/ui/menus/background.gdshader" id="1_1k1v4"]
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_to1yy"]
 [ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="2_to1yy"]
 [ext_resource type="PackedScene" uid="uid://bxpk6eksitrar" path="res://src/model/player.tscn" id="3_wayuo"]
@@ -14,6 +15,15 @@
 [ext_resource type="Script" uid="uid://042v75r6or48" path="res://src/ui/buttons/settings_texture_button.gd" id="12_1k1v4"]
 [ext_resource type="Script" uid="uid://itqtj6yfj8fq" path="res://src/ui/menus/win.gd" id="13_44nrx"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0of8p"]
+shader = ExtResource("1_1k1v4")
+shader_parameter/wave_speed = Vector2(0.05, 0.03)
+shader_parameter/wave_scale = 3.0
+shader_parameter/noise_strength = 0.2
+shader_parameter/caustic_strength = 0.3
+shader_parameter/deep_color = Color(0.02, 0.08, 0.25, 1)
+shader_parameter/shallow_color = Color(0.1, 0.3, 0.6, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqht0"]
 
 [node name="Game" type="Control"]
@@ -27,6 +37,7 @@ grow_vertical = 2
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.945098, 0.803922, 0.760784, 1)
 z_index = -1000
+material = SubResource("ShaderMaterial_0of8p")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_to1yy")
-stretch_mode = 1
+expand_mode = 1
 
 [node name="GameUILayer" type="CanvasLayer" parent="."]
 
