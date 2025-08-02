@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bav7nai4tyke7"]
+[gd_scene load_steps=9 format=3 uid="uid://bav7nai4tyke7"]
 
 [ext_resource type="Script" uid="uid://ct1tlatdy3y21" path="res://src/autoload/audio_manager.gd" id="1_pcgf1"]
 [ext_resource type="AudioStream" uid="uid://ciss1xrphttwu" path="res://assets/sound/music/Chad Crouch - Action.mp3" id="2_mk1sw"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dqiklyqddsop2" path="res://assets/sound/SFX/enemy_eliminated_electricity.mp3" id="5_auov6"]
 [ext_resource type="AudioStream" uid="uid://cvsjacyn6f5yv" path="res://assets/sound/SFX/player_damage.ogg" id="6_pbdaj"]
 [ext_resource type="AudioStream" uid="uid://bwcn8kktt27x5" path="res://assets/sound/SFX/victory.wav" id="7_cmdha"]
+[ext_resource type="AudioStream" uid="uid://bl1mhwejbechf" path="res://assets/sound/SFX/projectile_stopped.wav" id="8_mdxe6"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -47,4 +48,9 @@ bus = &"SFX"
 [node name="Victory" type="AudioStreamPlayer" parent="Sfx"]
 unique_name_in_owner = true
 stream = ExtResource("7_cmdha")
+bus = &"SFX"
+
+[node name="ProjectileStopped" type="AudioStreamPlayer" parent="Sfx"]
+unique_name_in_owner = true
+stream = ExtResource("8_mdxe6")
 bus = &"SFX"

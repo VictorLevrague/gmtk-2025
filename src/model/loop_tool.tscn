@@ -1,44 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://261qfcdd3sjt"]
+[gd_scene load_steps=3 format=3 uid="uid://261qfcdd3sjt"]
 
 [ext_resource type="Script" uid="uid://dt0lpdw0dean5" path="res://loop_tool.gd" id="1_c40q8"]
-
-[sub_resource type="Shader" id="Shader_c40q8"]
-code = "shader_type canvas_item;
-
-uniform sampler2D color_gradient;
-uniform sampler2D noiseTexture;
-uniform float speed: hint_range (0.0,5.0);
-uniform float variation: hint_range (0.0,1.0);
-uniform float width: hint_range (0.0,1.0);
-
-void fragment(){
-	
-	vec2 noise_uv = vec2(UV.x+TIME*speed, UV.y-TIME*speed);
-	float noise_sample = texture(noiseTexture, noise_uv).r;
-	float x_offset = noise_sample*variation - variation/2.0;
-	COLOR = texture(color_gradient, vec2((UV.x-0.5)/width + 0.5 + x_offset/width, UV.y));
-}"
-
-[sub_resource type="Gradient" id="Gradient_xumkk"]
-colors = PackedColorArray(0, 0, 0.788235, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tuq3o"]
-gradient = SubResource("Gradient_xumkk")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bvr3t"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuq3o"]
-shader = SubResource("Shader_c40q8")
-shader_parameter/color_gradient = SubResource("GradientTexture1D_tuq3o")
-shader_parameter/noiseTexture = SubResource("NoiseTexture2D_bvr3t")
-shader_parameter/speed = 1.103
-shader_parameter/variation = 0.279
-shader_parameter/width = 0.764
 
 [sub_resource type="Gradient" id="Gradient_2hfit"]
 
 [node name="LoopTool" type="Line2D" groups=["loop_tool"]]
-material = SubResource("ShaderMaterial_tuq3o")
 gradient = SubResource("Gradient_2hfit")
 joint_mode = 2
 script = ExtResource("1_c40q8")

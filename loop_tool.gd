@@ -159,6 +159,7 @@ func _on_loop_tool_area_entered(area: Area2D) -> void:
     if area.is_in_group("loop_stopper") and not area.is_in_group("projectile"):
         clear_line()
     if area.is_in_group("projectile") and player:
+        AudioManager.get_node("%ProjectileStopped").play()
         area.queue_free()
         projectile_taken += 1
         if projectile_taken >= player.maximum_projectile_hit_before_break:
