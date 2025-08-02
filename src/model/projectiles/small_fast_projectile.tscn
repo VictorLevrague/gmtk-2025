@@ -43,7 +43,8 @@ damage = 1.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(0.571703, 0.282999, 0, 1)
-position = Vector2(-0.052166, -2.16214)
+position = Vector2(1.71682, -5.36442e-05)
+rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_8a5rt")
 hframes = 8
@@ -52,8 +53,10 @@ frame = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.110931, -0.301521)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4nbgw")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+rotation = 1.5708
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_meq7m")
