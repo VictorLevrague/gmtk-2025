@@ -19,59 +19,59 @@ next_wave = ExtResource("2_xycgo")
 [node name="EnemySpawner" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(8, 423)
 enemies = Array[PackedScene]([ExtResource("4_x3a54"), ExtResource("5_xm7j5"), ExtResource("6_jlpt2")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 6.8
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(1620, 90)
 enemies = Array[PackedScene]([ExtResource("7_28ynj")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 8.2
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(1906, 406)
 enemies = Array[PackedScene]([ExtResource("4_x3a54"), ExtResource("6_jlpt2")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.1
 
 [node name="EnemySpawner4" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(1885, 1070)
 enemies = Array[PackedScene]([ExtResource("8_fbryv"), ExtResource("9_tgj1q")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 26.0
 
 [node name="EnemySpawner5" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(131, 747)
 enemies = Array[PackedScene]([ExtResource("10_jsxqs")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.0
 
 [node name="EnemySpawner6" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(-1, 847)
 enemies = Array[PackedScene]([ExtResource("9_tgj1q")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 12.0
 
 [node name="EnemySpawner7" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(1610, 1047)
 enemies = Array[PackedScene]([ExtResource("10_jsxqs")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.0
 
 [node name="EnemySpawner8" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(1844, 873)
 enemies = Array[PackedScene]([ExtResource("10_jsxqs")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.0
 
 [node name="EnemySpawner9" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(121, 954)
 enemies = Array[PackedScene]([ExtResource("10_jsxqs")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.0
 
 [node name="EnemySpawner10" parent="." instance=ExtResource("3_aqem4")]
 position = Vector2(212, 848)
 enemies = Array[PackedScene]([ExtResource("10_jsxqs")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.0

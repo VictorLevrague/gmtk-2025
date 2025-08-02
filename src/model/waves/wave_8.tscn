@@ -18,41 +18,41 @@ next_wave = ExtResource("2_yru1a")
 [node name="EnemySpawner" parent="." instance=ExtResource("2_x2dvh")]
 position = Vector2(8, 423)
 enemies = Array[PackedScene]([ExtResource("3_yru1a"), ExtResource("4_shyvm"), ExtResource("7_jiwdu")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 6.8
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("2_x2dvh")]
 position = Vector2(1620, 90)
 enemies = Array[PackedScene]([ExtResource("5_ij7bn")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 8.2
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("2_x2dvh")]
 position = Vector2(1910, 765)
 enemies = Array[PackedScene]([ExtResource("3_yru1a"), ExtResource("4_shyvm")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.1
 
 [node name="EnemySpawner4" parent="." instance=ExtResource("2_x2dvh")]
 position = Vector2(1885, 1070)
 enemies = Array[PackedScene]([ExtResource("6_ps1pv")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 8.2
 
 [node name="EnemySpawner5" parent="." instance=ExtResource("2_x2dvh")]
 position = Vector2(752, 1091)
 enemies = Array[PackedScene]([ExtResource("7_jiwdu")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.0
 
 [node name="EnemySpawner6" parent="." instance=ExtResource("2_x2dvh")]
 position = Vector2(-1, 847)
 enemies = Array[PackedScene]([ExtResource("8_x2dvh")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 12.0
 
 [node name="EnemySpawner7" parent="." instance=ExtResource("2_x2dvh")]
 position = Vector2(1284, 1088)
 enemies = Array[PackedScene]([ExtResource("7_jiwdu")])
-spawn_distance = 100
+spawn_distance = 200
 spawn_speed = 9.0
