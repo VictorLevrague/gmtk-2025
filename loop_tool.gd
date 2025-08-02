@@ -2,7 +2,7 @@ extends Line2D
 
 var segment_collisions: Array[CollisionShape2D] = []
 
-const MINIMUM_DISTANCE_BETWEEN_POINTS = 0.5
+const MINIMUM_DISTANCE_BETWEEN_POINTS = 20.0
 
 var projectile_taken: int = 0
 

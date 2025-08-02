@@ -37,13 +37,13 @@ shader_parameter/width = 0.764
 
 [sub_resource type="Gradient" id="Gradient_2hfit"]
 
-[node name="LoopTool" type="Line2D"]
+[node name="LoopTool" type="Line2D" groups=["loop_tool"]]
 material = SubResource("ShaderMaterial_tuq3o")
 gradient = SubResource("Gradient_2hfit")
 joint_mode = 2
 script = ExtResource("1_c40q8")
 
-[node name="CollisionArea" type="Area2D" parent="."]
+[node name="CollisionArea" type="Area2D" parent="." groups=["loop_tool"]]
 unique_name_in_owner = true
 collision_mask = 7
 
