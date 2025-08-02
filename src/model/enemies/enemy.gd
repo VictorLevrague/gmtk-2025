@@ -11,6 +11,7 @@ var health: float = max_health:
     set(value):
         health = clamp(value, 0, max_health)
         if health <= 0:
+            #AudioManager.get_node("%EnemyElimination").play()
             queue_free()
 @export var damage: float = 10
 @export var coins: int = 10
@@ -37,6 +38,7 @@ func add_knockback():
     velocity += knockback
 
 func take_damage(damage: float):
+    AudioManager.get_node("%EnemyElimination").play()
     var tween = damage_tween()
     await tween.finished
     health -= damage
