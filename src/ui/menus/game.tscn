@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu7fkk8unxjm7"]
+[gd_scene load_steps=18 format=3 uid="uid://cu7fkk8unxjm7"]
 
 [ext_resource type="Shader" uid="uid://liyy3rswu2an" path="res://src/ui/menus/background.gdshader" id="1_1k1v4"]
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_to1yy"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c48dl27qr28kq" path="res://assets/icons/cog.png" id="11_44nrx"]
 [ext_resource type="Script" uid="uid://042v75r6or48" path="res://src/ui/buttons/settings_texture_button.gd" id="12_1k1v4"]
 [ext_resource type="Script" uid="uid://itqtj6yfj8fq" path="res://src/ui/menus/win.gd" id="13_44nrx"]
+[ext_resource type="Script" uid="uid://cqipchr6sf3y7" path="res://src/ui/menus/transition_screen.gd" id="15_0of8p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0of8p"]
 shader = ExtResource("1_1k1v4")
@@ -249,6 +250,17 @@ theme_override_styles/pressed = ExtResource("7_wayuo")
 theme_override_styles/normal = ExtResource("7_wayuo")
 text = "Try again"
 script = ExtResource("8_vgh4s")
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionScreen" type="ColorRect" parent="TransitionLayer"]
+modulate = Color(0, 0, 0.235294, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_0of8p")
 
 [connection signal="pressed" from="OptionsLayer/SettingsButton" to="OptionsLayer/SettingsButton" method="_on_pressed"]
 [connection signal="pressed" from="GameOverLayer/GameOver/Panel/RestartButton" to="GameOverLayer/GameOver/Panel/RestartButton" method="_on_pressed"]
