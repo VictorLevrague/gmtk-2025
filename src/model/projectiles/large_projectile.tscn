@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://bntug0ebhgmwd"]
 
 [ext_resource type="Script" uid="uid://dslph7nnbbtcl" path="res://src/model/projectiles/projectile.gd" id="1_tpq6d"]
+[ext_resource type="Texture2D" uid="uid://vbmofj4eraqq" path="res://assets/icons/bulle_projectile.png" id="2_5fq1c"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_q6yms"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho6g7"]
-size = Vector2(92.127, 79.0934)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fq1c"]
+radius = 27.0874
 
 [sub_resource type="Gradient" id="Gradient_upyqx"]
-colors = PackedColorArray(0.00100882, 0.212092, 0.971421, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0, 0.412245, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.026391, 0.277158, 1, 0.253061, 0.272774, 0.460081, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8b8wm"]
 gradient = SubResource("Gradient_upyqx")
@@ -23,7 +23,7 @@ curve = SubResource("Curve_g47ju")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_meq7m"]
 particle_flag_disable_z = true
 emission_shape = 1
-emission_sphere_radius = 17.6
+emission_sphere_radius = 32.27
 initial_velocity_min = -10.0
 initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
@@ -39,15 +39,16 @@ script = ExtResource("1_tpq6d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0.00498158, 0.00498205)
-scale = Vector2(91.3839, 78.8184)
-texture = SubResource("CanvasTexture_q6yms")
+modulate = Color(0.268853, 0.135044, 0.135249, 1)
+position = Vector2(7.12428, 3.04156)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_5fq1c")
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.00181389, -0.00572014)
-shape = SubResource("RectangleShape2D_ho6g7")
+position = Vector2(-1.23604, -4.28674)
+shape = SubResource("CircleShape2D_5fq1c")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
 amount = 1000
 process_material = SubResource("ParticleProcessMaterial_meq7m")

@@ -1,14 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://c60ygudbrgmf7"]
 
 [ext_resource type="Script" uid="uid://dslph7nnbbtcl" path="res://src/model/projectiles/projectile.gd" id="1_yx4f2"]
+[ext_resource type="Texture2D" uid="uid://vbmofj4eraqq" path="res://assets/icons/bulle_projectile.png" id="2_ov0gq"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_q6yms"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho6g7"]
-size = Vector2(18.8827, 18.308)
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3e0p"]
+radius = 11.1684
 
 [sub_resource type="Gradient" id="Gradient_upyqx"]
-colors = PackedColorArray(0.00100882, 0.212092, 0.971421, 1, 1, 1, 1, 1)
+colors = PackedColorArray(3.17663e-06, 0, 0.747981, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8b8wm"]
 gradient = SubResource("Gradient_upyqx")
@@ -23,12 +22,12 @@ curve = SubResource("Curve_g47ju")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_meq7m"]
 particle_flag_disable_z = true
 emission_shape = 1
-emission_sphere_radius = 17.6
+emission_sphere_radius = 12.71
 initial_velocity_min = -10.0
 initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.0
-scale_max = 4.0
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_0ctvc")
 color_ramp = SubResource("GradientTexture1D_8b8wm")
 turbulence_enabled = true
@@ -39,16 +38,18 @@ script = ExtResource("1_yx4f2")
 speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0.00498158, 0.00498205)
-scale = Vector2(18.6202, 17.6413)
-texture = SubResource("CanvasTexture_q6yms")
+modulate = Color(0.0784314, 0.0509804, 0.592157, 1)
+position = Vector2(-4.31725, -22.5915)
+scale = Vector2(0.2, 0.200752)
+texture = ExtResource("2_ov0gq")
+hframes = 2
+vframes = 2
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.00181389, -0.00572014)
-shape = SubResource("RectangleShape2D_ho6g7")
+shape = SubResource("CircleShape2D_c3e0p")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
 amount = 1000
 process_material = SubResource("ParticleProcessMaterial_meq7m")

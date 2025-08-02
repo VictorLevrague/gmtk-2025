@@ -1,17 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://ba3dgk3thuhmt"]
 
 [ext_resource type="Script" uid="uid://dslph7nnbbtcl" path="res://src/model/projectiles/projectile.gd" id="1_y1kf3"]
+[ext_resource type="Texture2D" uid="uid://vbmofj4eraqq" path="res://assets/icons/bulle_projectile.png" id="2_sbitt"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_q6yms"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sbitt"]
+radius = 15.7528
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho6g7"]
-size = Vector2(27.2578, 26.8599)
-
-[sub_resource type="Gradient" id="Gradient_upyqx"]
-colors = PackedColorArray(0.00100882, 0.212092, 0.971421, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_r3flo"]
+offsets = PackedFloat32Array(0.0367347, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8b8wm"]
-gradient = SubResource("Gradient_upyqx")
+gradient = SubResource("Gradient_r3flo")
 
 [sub_resource type="Curve" id="Curve_g47ju"]
 _data = [Vector2(0.00899281, 0.991051), 0.0, 0.0, 0, 0, Vector2(0.584532, 0.364653), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -39,13 +38,17 @@ script = ExtResource("1_y1kf3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0.00498158, 0.00498205)
-scale = Vector2(27.5996, 26.5696)
-texture = SubResource("CanvasTexture_q6yms")
+modulate = Color(0.333626, 0.333626, 0.333626, 1)
+position = Vector2(-1.03826, 8.38737)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_sbitt")
+hframes = 2
+vframes = 2
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.00181389, -0.00572014)
-shape = SubResource("RectangleShape2D_ho6g7")
+shape = SubResource("CircleShape2D_sbitt")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 1000
