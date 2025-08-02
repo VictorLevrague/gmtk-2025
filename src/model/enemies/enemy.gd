@@ -22,12 +22,9 @@ var knockback_strength = 40
 func _physics_process(delta: float) -> void:
     var center_screen = get_viewport_rect().size / 2.0
     velocity = (center_screen - global_position).normalized() * speed
-    #if %Sprite2D:
-        #%Sprite2D.flip_v = false if velocity.x > 0.1 else true
-    #%Sprite2D.look_at(center_screen)
-    #if %CollisionShape2D:
-        #%CollisionShape2D.look_at(center_screen)
-        #%CollisionShape2D.rotation_degrees += 90
+    if %Sprite2D:
+        %Sprite2D.flip_v = false if velocity.x > 0.1 else true
+    look_at(center_screen)
     add_knockback()
     var collider = move_and_collide(velocity * delta)
     if collider:

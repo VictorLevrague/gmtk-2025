@@ -5,4 +5,4 @@ var direction: Vector2 = Vector2.RIGHT
 @export var damage: float = 5
 
 func _physics_process(delta: float) -> void:
-    position += direction * speed * delta
+    global_position += direction * speed * delta
