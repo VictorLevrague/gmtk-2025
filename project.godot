@@ -13,7 +13,7 @@ config_version=5
 config/name="GMTK 2025"
 run/main_scene="uid://he0hve4tvnis"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://bom5tpj3r0k0c"
 
 [audio]
 
@@ -28,6 +28,7 @@ Signals="*res://src/autoload/signals.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

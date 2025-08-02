@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://he0hve4tvnis"]
+[gd_scene load_steps=16 format=3 uid="uid://he0hve4tvnis"]
 
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_6esld"]
 [ext_resource type="Shader" uid="uid://liyy3rswu2an" path="res://src/ui/menus/background.gdshader" id="1_ydojc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="3_ye5sf"]
 [ext_resource type="PackedScene" uid="uid://cu7fkk8unxjm7" path="res://src/ui/menus/game.tscn" id="4_0253g"]
 [ext_resource type="Texture2D" uid="uid://beajdywxmax6p" path="res://assets/icons/bulles.png" id="8_suuo2"]
+[ext_resource type="Texture2D" uid="uid://by7vkp5o5m2wb" path="res://assets/icons/GMTK_logo.png" id="9_7530n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_suuo2"]
 shader = ExtResource("1_ydojc")
@@ -167,7 +168,7 @@ texture = ExtResource("8_suuo2")
 
 [node name="Bulles3" type="Sprite2D" parent="."]
 modulate = Color(0, 0.839216, 1, 1)
-position = Vector2(1763, 394)
+position = Vector2(1857, 549)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_suuo2")
 
@@ -182,6 +183,11 @@ modulate = Color(0, 0.839216, 1, 1)
 position = Vector2(1001, 971)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_suuo2")
+
+[node name="GmtkLogo" type="Sprite2D" parent="."]
+position = Vector2(1684, 291)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_7530n")
 
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PlayButton" to="PlayButton" method="_on_mouse_exited"]

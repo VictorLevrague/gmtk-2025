@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcpl1frha813f"]
+[gd_scene load_steps=8 format=3 uid="uid://bcpl1frha813f"]
 
 [ext_resource type="Script" uid="uid://ca4gkdpb7dcjh" path="res://src/model/waves/wave.gd" id="1_ygti8"]
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="2_jgiw2"]
+[ext_resource type="PackedScene" uid="uid://nqrt6hnmg7bc" path="res://src/model/waves/wave_14.tscn" id="2_x4slh"]
 [ext_resource type="PackedScene" uid="uid://cjngf21xcrnng" path="res://src/model/enemies/basic_enemy.tscn" id="3_x4slh"]
 [ext_resource type="PackedScene" uid="uid://dc2wpbktmp2b" path="res://src/model/enemies/basic_enemy_upgrade.tscn" id="4_22ft7"]
 [ext_resource type="PackedScene" uid="uid://cmovm8r4bh6b2" path="res://src/model/enemies/canon_enemy_upgrade.tscn" id="5_el70m"]
@@ -9,34 +10,30 @@
 
 [node name="Wave13" type="Node"]
 script = ExtResource("1_ygti8")
-wave_duration = 40.0
+wave_duration = 60.0
+next_wave = ExtResource("2_x4slh")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_jgiw2")]
 position = Vector2(8, 423)
 enemies = Array[PackedScene]([ExtResource("3_x4slh"), ExtResource("4_22ft7")])
-spawn_distance = 200
 spawn_speed = 6.0
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("2_jgiw2")]
 position = Vector2(1620, 90)
 enemies = Array[PackedScene]([ExtResource("5_el70m")])
-spawn_distance = 200
 spawn_speed = 8.0
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("2_jgiw2")]
 position = Vector2(1910, 765)
 enemies = Array[PackedScene]([ExtResource("4_22ft7")])
-spawn_distance = 200
 spawn_speed = 6.0
 
 [node name="EnemySpawner4" parent="." instance=ExtResource("2_jgiw2")]
 position = Vector2(345, 1094)
 enemies = Array[PackedScene]([ExtResource("5_el70m")])
-spawn_distance = 200
 spawn_speed = 8.5
 
 [node name="EnemySpawner5" parent="." instance=ExtResource("2_jgiw2")]
 position = Vector2(1259, 1059)
 enemies = Array[PackedScene]([ExtResource("6_jgiw2")])
-spawn_distance = 200
 spawn_speed = 12.0

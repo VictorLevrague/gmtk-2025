@@ -32,6 +32,7 @@ func _process(delta):
     if Input.is_action_just_released("left_mouse_click"):
         clear_line()
         player.regen_mana()
+        projectile_taken = 0
 
 func remove_point_and_collision(index: int) -> void:
     if index < 0 or index >= points.size():
