@@ -36,6 +36,8 @@ var coins: int = 0:
 var damage_per_loop: float = 100
 var maximum_projectile_hit_before_break: int = 1
 
+@onready var base_sprite_color = %Sprite2D.modulate
+
 func _ready() -> void:
     Signals.end_wave.connect(full_heal)
 
@@ -49,6 +51,7 @@ func take_damage(body: Node2D):
     if "damage" in body:
         health -= body.damage
         AudioManager.get_node("%PlayerDamaged").play()
+        var damage_tween = damage_tween()
         body.queue_free()
 
 func full_heal():
@@ -57,3 +60,10 @@ func full_heal():
 
 func regen_mana():
     mana = max_mana
+
+func damage_tween() -> Tween:
+    var tween = get_tree().create_tween()
+    if %Sprite2D:
+        tween.tween_property(%Sprite2D, "modulate", Color(3, 0.25, 0.25), 0.2)
+        tween.chain().tween_property(%Sprite2D, "modulate", base_sprite_color, 0.2)
+    return tween

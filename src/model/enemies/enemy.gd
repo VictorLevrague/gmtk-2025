@@ -11,7 +11,6 @@ var health: float = max_health:
     set(value):
         health = clamp(value, 0, max_health)
         if health <= 0:
-            #AudioManager.get_node("%EnemyElimination").play()
             queue_free()
 @export var damage: float = 10
 @export var coins: int = 10
