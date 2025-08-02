@@ -14,6 +14,7 @@ func open_shop():
     show()
     init_upgrades()
     disable_upgrade_buttons(false)
+    %AnimationPlayer.play("scale_up")
 
 func init_upgrades():
     clear_upgrade_container()
@@ -45,6 +46,8 @@ func disable_upgrade_buttons(are_disabled: bool):
     for upgrade_ui in %UpgradeContainer.get_children():
         upgrade_ui.get_node("%Button").disabled = are_disabled
         upgrade_ui.stop_animation()
+    if are_disabled:
+        %AnimationPlayer.play("reset_scale_up")
 
 func clear_upgrade_container():
     for upgrade_ui in %UpgradeContainer.get_children():
