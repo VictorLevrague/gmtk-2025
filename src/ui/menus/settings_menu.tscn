@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct1vpo7esd1h5"]
+[gd_scene load_steps=11 format=3 uid="uid://ct1vpo7esd1h5"]
 
 [ext_resource type="Theme" uid="uid://lfnp5wnqi1j0" path="res://src/ui/custom_themes/default_theme.tres" id="1_0pnaf"]
 [ext_resource type="PackedScene" uid="uid://dbkrf8tjlxja" path="res://src/ui/ui_elements/audio_slider.tscn" id="1_lsj7o"]
@@ -8,6 +8,44 @@
 [ext_resource type="Script" uid="uid://dcknuqlt7ef8q" path="res://src/ui/menus/close_button.gd" id="6_ocn2b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbqjc"]
+
+[sub_resource type="Animation" id="Animation_ocn2b"]
+resource_name = "scale_up"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitlePanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 0.757858),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_jcxsw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitlePanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cpkta"]
+_data = {
+&"RESET": SubResource("Animation_jcxsw"),
+&"scale_up": SubResource("Animation_ocn2b")
+}
 
 [node name="Options" type="Panel"]
 process_mode = 3
@@ -49,6 +87,7 @@ offset_top = -23.0
 offset_right = 145.5
 offset_bottom = 71.0
 grow_horizontal = 2
+pivot_offset = Vector2(144, 47)
 theme_override_styles/panel = ExtResource("2_iekqu")
 
 [node name="Title" type="RichTextLabel" parent="TitlePanel"]
@@ -174,6 +213,12 @@ theme_override_styles/pressed = ExtResource("2_iekqu")
 theme_override_styles/normal = ExtResource("2_iekqu")
 text = "Close"
 script = ExtResource("6_ocn2b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cpkta")
+}
+autoplay = "scale_up"
 
 [connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="hidden" from="." to="." method="_on_hidden"]

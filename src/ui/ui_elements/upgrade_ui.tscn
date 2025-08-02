@@ -34,10 +34,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.35, 0.7, 1.05),
-"transitions": PackedFloat32Array(0.757857, 1.1487, 1.1487, 1.36604),
+"times": PackedFloat32Array(0, 0.35, 0.7),
+"transitions": PackedFloat32Array(0.757857, 1.1487, 1.1487),
 "update": 0,
-"values": [0.0, -0.0872665, 0.0872665, 0.0]
+"values": [0.0, -0.0872665, 0.0872665]
 }
 
 [sub_resource type="Animation" id="Animation_nom1l"]
