@@ -1,13 +1,7 @@
 extends Button
 
-@export var next_scene: PackedScene
-
-func _on_pressed() -> void:
-    AudioManager.get_node("%ButtonClick2").play()
-    get_tree().change_scene_to_packed(next_scene)
-
 func _on_mouse_entered() -> void:
-    var scale_tween = bounce_scale_tween(Vector2(1.2, 1.2), 240)
+    var scale_tween = bounce_scale_tween(Vector2(1.2, 1.2), 245)
 
 func _on_mouse_exited() -> void:
     var scale_tween = bounce_scale_tween(Vector2(1.0, 1.0), 255)

@@ -50,39 +50,40 @@ offset_top = 53.0
 offset_right = 340.0
 offset_bottom = 136.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 100
-text = "Defend the magic whip"
+theme_override_font_sizes/font_size = 140
+text = "Gotta fish them all"
 horizontal_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -479.0
-offset_top = -161.0
-offset_right = 496.0
-offset_bottom = 286.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 60
-
-[node name="PlayButton" type="Button" parent="Buttons"]
+[node name="PlayButton" type="Button" parent="."]
 layout_mode = 2
+offset_left = 481.0
+offset_top = 379.0
+offset_right = 1456.0
+offset_bottom = 572.0
+pivot_offset = Vector2(487, 96)
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ydojc")
+theme_override_styles/hover = ExtResource("2_pqdi3")
+theme_override_styles/pressed = ExtResource("2_pqdi3")
 theme_override_styles/normal = ExtResource("2_pqdi3")
 text = "Play"
 script = ExtResource("3_0253g")
 next_scene = ExtResource("4_0253g")
 
-[node name="SettingsButton" type="Button" parent="Buttons"]
+[node name="SettingsButton" type="Button" parent="."]
 z_index = 2
 layout_mode = 2
+offset_left = 481.0
+offset_top = 632.0
+offset_right = 1456.0
+offset_bottom = 826.0
+pivot_offset = Vector2(487, 97)
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 100
 theme_override_styles/focus = SubResource("StyleBoxEmpty_suuo2")
+theme_override_styles/hover = ExtResource("2_pqdi3")
+theme_override_styles/pressed = ExtResource("2_pqdi3")
 theme_override_styles/normal = ExtResource("2_pqdi3")
 text = "Settings"
 script = ExtResource("2_ye5sf")
@@ -93,5 +94,9 @@ script = ExtResource("2_ye5sf")
 unique_name_in_owner = true
 visible = false
 
-[connection signal="pressed" from="Buttons/PlayButton" to="Buttons/PlayButton" method="_on_pressed"]
-[connection signal="pressed" from="Buttons/SettingsButton" to="Buttons/SettingsButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PlayButton" to="PlayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="SettingsButton" to="SettingsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsButton" to="SettingsButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="SettingsButton" to="SettingsButton" method="_on_pressed"]
