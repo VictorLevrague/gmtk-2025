@@ -21,6 +21,7 @@ func spawn(position: Vector2):
         var enemy_instance = enemies[randi_range(0, enemies.size() - 1)].instantiate()
         enemy_instance.position = position
         %Enemies.add_child(enemy_instance)
+        enemy_instance.fade_in()
     else:
         print("Nb enemies is max")
 

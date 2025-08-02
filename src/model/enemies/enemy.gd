@@ -50,3 +50,9 @@ func damage_tween() -> Tween:
         tween.tween_property(%Sprite2D, "modulate", Color(3, 0.25, 0.25), 0.2)
         tween.chain().tween_property(%Sprite2D, "modulate", base_color, 0.2)
     return tween
+
+func fade_in() -> void:
+    var tween = create_tween()
+    if %Sprite2D:
+        %Sprite2D.modulate.a = 0
+        tween.tween_property(%Sprite2D, "modulate:a", 1, 0.5).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
