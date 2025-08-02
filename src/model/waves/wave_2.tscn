@@ -9,7 +9,7 @@
 
 [node name="Wave2" type="Node"]
 script = ExtResource("1_stdsh")
-wave_duration = 2.0
+wave_duration = 50.0
 next_wave = ExtResource("2_0uk7j")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_nexpy")]
