@@ -1,5 +1,7 @@
 extends Line2D
 
+var segment_collisions: Array[CollisionShape2D] = []
+
 const MINIMUM_DISTANCE_BETWEEN_POINTS = 0.5
 
 var projectile_taken: int = 0
@@ -31,9 +33,29 @@ func _process(delta):
         clear_line()
         player.regen_mana()
 
-func remove_point_and_collision(index):
+func remove_point_and_collision(index: int) -> void:
+    if index < 0 or index >= points.size():
+        return
+    if index == 0 and segment_collisions.size() > 0:
+        var col = segment_collisions.pop_front()
+        col.queue_free()
+    elif index == points.size() - 1 and segment_collisions.size() > 0:
+        var col = segment_collisions.pop_back()
+        col.queue_free()
+    else:
+        #Should be useless
+        var before_idx = index - 1
+        var after_idx = index
+        if before_idx >= 0 and before_idx < segment_collisions.size():
+            var col_before = segment_collisions[before_idx]
+            col_before.queue_free()
+            segment_collisions.remove_at(before_idx)
+            index -= 1
+        if after_idx - 1 >= 0 and after_idx - 1 < segment_collisions.size():
+            var col_after = segment_collisions[after_idx - 1]
+            col_after.queue_free()
+            segment_collisions.remove_at(after_idx - 1)
     remove_point(index)
-    %CollisionArea.get_child(index).queue_free()
 
 func check_loop_formation(new_start: Vector2, new_end: Vector2):
     for i in range(points.size() - 3):
@@ -120,6 +142,7 @@ func add_collision_to_segment(last_point: Vector2, new_point: Vector2):
     var length = last_point.distance_to(new_point)
     rect.extents = Vector2(length / 2, 10)
     new_shape.shape = rect
+    segment_collisions.append(new_shape)
 
 func clear_children(parent):
     for child in parent.get_children():
@@ -127,7 +150,10 @@ func clear_children(parent):
 
 func clear_line():
     clear_points()
-    clear_children(%CollisionArea)
+    for col in segment_collisions:
+        if col and is_instance_valid(col):
+            col.queue_free()
+    segment_collisions.clear()
 
 func _on_loop_tool_area_entered(area: Area2D) -> void:
     if area.is_in_group("loop_stopper") and not area.is_in_group("projectile"):
