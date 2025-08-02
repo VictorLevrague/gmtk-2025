@@ -31,6 +31,7 @@ func new_wave() -> void:
 func _on_wave_timer_timeout() -> void:
     %WaveTimer.stop()
     stop_all_enemy_spawn_timers()
+    AudioManager.get_node("%Victory").play()
     if wave_id == 19:
         Signals.emit_signal("victory")
     else:
