@@ -6,6 +6,9 @@ var projectile_taken: int = 0
 
 @export var player: Player
 
+func _ready() -> void:
+    Signals.end_wave.connect(_on_end_wave)
+
 func _process(delta):
     if Input.is_action_pressed("left_mouse_click"):
         if player:
@@ -139,3 +142,6 @@ func _on_loop_tool_area_entered(area: Area2D) -> void:
 func _on_loop_tool_body_entered(body: Node2D) -> void:
     if body.is_in_group("loop_stopper"):
         clear_line()
+
+func _on_end_wave():
+    clear_line()
