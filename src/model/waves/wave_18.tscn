@@ -22,17 +22,17 @@ spawn_speed = 6.8
 [node name="EnemySpawner5" parent="." instance=ExtResource("3_ncbkt")]
 position = Vector2(-14, 827)
 enemies = Array[PackedScene]([ExtResource("5_sf21o"), ExtResource("6_chhgq"), ExtResource("6_ioa5b"), ExtResource("5_sf21o"), ExtResource("6_chhgq"), ExtResource("6_ioa5b"), ExtResource("10_gekub"), ExtResource("8_ic7rb")])
-spawn_speed = 6.8
+spawn_speed = 17.0
 
 [node name="EnemySpawner10" parent="." instance=ExtResource("3_ncbkt")]
 position = Vector2(106, 995)
 enemies = Array[PackedScene]([ExtResource("5_sf21o"), ExtResource("6_chhgq"), ExtResource("6_ioa5b"), ExtResource("5_sf21o"), ExtResource("6_chhgq"), ExtResource("6_ioa5b"), ExtResource("10_gekub"), ExtResource("8_ic7rb")])
-spawn_speed = 8.9
+spawn_speed = 9.9
 
 [node name="EnemySpawner13" parent="." instance=ExtResource("3_ncbkt")]
 position = Vector2(698, 1139)
 enemies = Array[PackedScene]([ExtResource("5_sf21o"), ExtResource("6_chhgq"), ExtResource("6_ioa5b"), ExtResource("5_sf21o"), ExtResource("6_chhgq"), ExtResource("6_ioa5b"), ExtResource("10_gekub"), ExtResource("8_ic7rb")])
-spawn_speed = 6.8
+spawn_speed = 7.8
 
 [node name="EnemySpawner14" parent="." instance=ExtResource("3_ncbkt")]
 position = Vector2(896, 1161)
@@ -52,7 +52,7 @@ spawn_speed = 13.0
 [node name="EnemySpawner17" parent="." instance=ExtResource("3_ncbkt")]
 position = Vector2(1912, 245)
 enemies = Array[PackedScene]([ExtResource("5_sf21o"), ExtResource("6_chhgq"), ExtResource("6_ioa5b"), ExtResource("5_sf21o"), ExtResource("6_chhgq"), ExtResource("6_ioa5b"), ExtResource("10_gekub"), ExtResource("8_ic7rb")])
-spawn_speed = 8.0
+spawn_speed = 10.0
 
 [node name="EnemySpawner18" parent="." instance=ExtResource("3_ncbkt")]
 position = Vector2(1774, 53)

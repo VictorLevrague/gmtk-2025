@@ -11,7 +11,7 @@ var max_health:= 100.:
 		max_health = value
 		Signals.emit_signal("update_max_health", max_health)
 		full_heal()
-var max_mana:= 1500.:
+var max_mana:= 1800.:
 	set(value):
 		max_mana = value
 		Signals.emit_signal("update_max_mana", max_mana)
