@@ -8,11 +8,14 @@ var projectile_taken: int = 0
 
 @export var player: Player
 
+var tool_available: bool = true
+
 func _ready() -> void:
     Signals.end_wave.connect(_on_end_wave)
+    Signals.new_wave.connect(_on_new_wave)
 
 func _process(delta):
-    if Input.is_action_pressed("left_mouse_click"):
+    if Input.is_action_pressed("left_mouse_click") and tool_available:
         if player:
             if not points.size():
                 add_point(get_local_mouse_position())
@@ -172,4 +175,8 @@ func _on_loop_tool_body_entered(body: Node2D) -> void:
         clear_line()
 
 func _on_end_wave():
+    tool_available = false
     clear_line()
+
+func _on_new_wave():
+    tool_available = true
