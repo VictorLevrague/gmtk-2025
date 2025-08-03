@@ -11,7 +11,7 @@ height = 162.819
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_p54b5")
-max_health = 500
+max_health = 400
 damage = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

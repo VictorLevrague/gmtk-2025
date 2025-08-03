@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_k4j8n")
-max_health_gain = 25
+max_health_gain = 30
 level = 1
 unlocked_upgrade = ExtResource("3_cmvme")
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"

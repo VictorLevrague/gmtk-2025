@@ -1,14 +1,11 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://defmcatash2ht"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://defmcatash2ht"]
 
 [ext_resource type="Script" uid="uid://oj2v2bx82frk" path="res://src/model/upgrades/damage/damage_upgrade.gd" id="1_5vlyn"]
-[ext_resource type="Texture2D" uid="uid://blfdv33dxhjib" path="res://assets/icons/dumbbell.png" id="2_qpkvo"]
 [ext_resource type="Resource" uid="uid://cpyfb0kega2xa" path="res://src/model/upgrades/damage/damage_lvl_6.tres" id="3_qpkvo"]
 
 [resource]
 script = ExtResource("1_5vlyn")
 damage_upgrade = 50
-name = "Loop damage"
 level = 5
-texture = ExtResource("2_qpkvo")
 unlocked_upgrade = ExtResource("3_qpkvo")
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"

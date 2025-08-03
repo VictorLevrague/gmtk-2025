@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_4wm34")
-max_health_gain = 25
+max_health_gain = 30
 level = 10
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"

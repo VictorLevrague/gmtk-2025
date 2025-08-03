@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dt30vv2j3yopy" path="res://src/model/waves/wave_3.tscn" id="2_0uk7j"]
 [ext_resource type="PackedScene" uid="uid://cjngf21xcrnng" path="res://src/model/enemies/basic_enemy.tscn" id="2_stdsh"]
 [ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/canon_enemy.tscn" id="3_5xddj"]
-[ext_resource type="PackedScene" path="res://src/model/enemies/jelly.tscn" id="6_bo3gh"]
+[ext_resource type="PackedScene" uid="uid://dv2sqg1kr60sp" path="res://src/model/enemies/jelly.tscn" id="6_bo3gh"]
 
 [node name="Wave2" type="Node"]
 script = ExtResource("1_stdsh")

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://ca4gkdpb7dcjh" path="res://src/model/waves/wave.gd" id="1_kj65g"]
 [ext_resource type="PackedScene" uid="uid://drgj5cadxu4l2" path="res://src/model/waves/wave_6.tscn" id="2_mixcq"]
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="2_s8jl7"]
-[ext_resource type="PackedScene" uid="uid://ckcgsuip2fqfm" path="res://src/model/enemies/bazooka_enemy.tscn" id="4_kj65g"]
-[ext_resource type="PackedScene" uid="uid://bxrcx8fmr1vqb" path="res://src/model/enemies/resistant_enemy.tscn" id="6_2ay34"]
-[ext_resource type="PackedScene" path="res://src/model/enemies/jelly.tscn" id="6_s8jl7"]
+[ext_resource type="PackedScene" uid="uid://bbiiiabspp0jd" path="res://src/model/enemies/fast_enemy.tscn" id="5_1m6e5"]
+[ext_resource type="PackedScene" uid="uid://caq5a0k6ful7y" path="res://src/model/enemies/fast_shooter_enemy.tscn" id="5_mixcq"]
+[ext_resource type="PackedScene" uid="uid://dv2sqg1kr60sp" path="res://src/model/enemies/jelly.tscn" id="6_s8jl7"]
 
 [node name="Wave5" type="Node"]
 script = ExtResource("1_kj65g")
@@ -14,13 +14,13 @@ next_wave = ExtResource("2_mixcq")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_s8jl7")]
 position = Vector2(0, 559)
-enemies = Array[PackedScene]([ExtResource("4_kj65g"), ExtResource("6_2ay34")])
+enemies = Array[PackedScene]([ExtResource("5_1m6e5"), ExtResource("5_mixcq")])
 spawn_speed = 12.0
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("2_s8jl7")]
 position = Vector2(1620, 90)
-enemies = Array[PackedScene]([ExtResource("6_2ay34"), ExtResource("4_kj65g")])
-spawn_speed = 8.5
+enemies = Array[PackedScene]([ExtResource("5_1m6e5"), ExtResource("5_mixcq")])
+spawn_speed = 15.0
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("2_s8jl7")]
 position = Vector2(1910, 765)
@@ -34,5 +34,5 @@ spawn_speed = 7.5
 
 [node name="EnemySpawner5" parent="." instance=ExtResource("2_s8jl7")]
 position = Vector2(1829, 1089)
-enemies = Array[PackedScene]([ExtResource("4_kj65g"), ExtResource("6_2ay34")])
-spawn_speed = 15.0
+enemies = Array[PackedScene]([ExtResource("5_1m6e5"), ExtResource("5_mixcq")])
+spawn_speed = 17.5

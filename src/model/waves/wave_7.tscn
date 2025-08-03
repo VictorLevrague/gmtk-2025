@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://3t26rlc64x20"]
+[gd_scene load_steps=7 format=3 uid="uid://3t26rlc64x20"]
 
 [ext_resource type="Script" uid="uid://ca4gkdpb7dcjh" path="res://src/model/waves/wave.gd" id="1_vnifj"]
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="2_46f3b"]
 [ext_resource type="PackedScene" uid="uid://iyteswu6rk1o" path="res://src/model/waves/wave_8.tscn" id="2_vhg4t"]
+[ext_resource type="PackedScene" uid="uid://ckcgsuip2fqfm" path="res://src/model/enemies/bazooka_enemy.tscn" id="4_vnifj"]
 [ext_resource type="PackedScene" uid="uid://caq5a0k6ful7y" path="res://src/model/enemies/fast_shooter_enemy.tscn" id="4_wwj5x"]
 [ext_resource type="PackedScene" uid="uid://bbiiiabspp0jd" path="res://src/model/enemies/fast_enemy.tscn" id="6_ghry5"]
 
@@ -13,8 +14,13 @@ next_wave = ExtResource("2_vhg4t")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_46f3b")]
 position = Vector2(8, 423)
-enemies = Array[PackedScene]([ExtResource("4_wwj5x"), ExtResource("4_wwj5x")])
-spawn_speed = 7.8
+enemies = Array[PackedScene]([ExtResource("4_vnifj")])
+spawn_speed = 18.0
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("2_46f3b")]
+position = Vector2(1925, 691)
+enemies = Array[PackedScene]([ExtResource("4_vnifj")])
+spawn_speed = 19.0
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("2_46f3b")]
 position = Vector2(1620, 90)

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="3_ncbkt"]
 [ext_resource type="PackedScene" uid="uid://hebtq2r1u5as" path="res://src/model/enemies/fast_enemy_upgrade.tscn" id="5_sf21o"]
 [ext_resource type="PackedScene" uid="uid://dc2wpbktmp2b" path="res://src/model/enemies/basic_enemy_upgrade.tscn" id="6_chhgq"]
-[ext_resource type="PackedScene" path="res://src/model/enemies/jelly.tscn" id="6_ioa5b"]
+[ext_resource type="PackedScene" uid="uid://dv2sqg1kr60sp" path="res://src/model/enemies/jelly.tscn" id="6_ioa5b"]
 [ext_resource type="PackedScene" uid="uid://bxrcx8fmr1vqb" path="res://src/model/enemies/resistant_enemy.tscn" id="8_ic7rb"]
 [ext_resource type="PackedScene" uid="uid://fue5w6r26opc" path="res://src/model/enemies/bait_enemy.tscn" id="10_gekub"]
 
