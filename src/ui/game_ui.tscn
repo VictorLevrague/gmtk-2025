@@ -86,7 +86,7 @@ script = ExtResource("1_jdnd6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StatsPanel" type="Panel" parent="CanvasLayer"]
+[node name="StatsPanel" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.011
 anchor_top = 0.018
@@ -95,23 +95,12 @@ anchor_bottom = 0.144
 offset_left = -0.120001
 offset_top = -0.440001
 offset_right = -0.720032
-offset_bottom = -0.520004
-grow_horizontal = 2
+offset_bottom = 9.48
 theme_override_styles/panel = SubResource("StyleBoxFlat_2llbp")
 
 [node name="StatsContainer" type="HBoxContainer" parent="CanvasLayer/StatsPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.5
-offset_top = -63.0
-offset_right = 320.5
-offset_bottom = 63.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
 [node name="MainStats" type="VBoxContainer" parent="CanvasLayer/StatsPanel/StatsContainer"]

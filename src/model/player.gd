@@ -67,3 +67,6 @@ func damage_tween() -> Tween:
         tween.tween_property(%Sprite2D, "modulate", Color(3, 0.25, 0.25), 0.2)
         tween.chain().tween_property(%Sprite2D, "modulate", base_sprite_color, 0.2)
     return tween
+
+func _process(delta: float) -> void:
+    position = get_viewport().get_visible_rect().size / 2.0
