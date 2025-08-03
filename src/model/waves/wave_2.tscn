@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dt30vv2j3yopy" path="res://src/model/waves/wave_3.tscn" id="2_0uk7j"]
 [ext_resource type="PackedScene" uid="uid://cjngf21xcrnng" path="res://src/model/enemies/basic_enemy.tscn" id="2_stdsh"]
 [ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/canon_enemy.tscn" id="3_5xddj"]
-[ext_resource type="PackedScene" uid="uid://bbiiiabspp0jd" path="res://src/model/enemies/fast_enemy.tscn" id="5_5xddj"]
+[ext_resource type="PackedScene" path="res://src/model/enemies/jelly.tscn" id="6_bo3gh"]
 
 [node name="Wave2" type="Node"]
 script = ExtResource("1_stdsh")
@@ -14,25 +14,25 @@ next_wave = ExtResource("2_0uk7j")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_nexpy")]
 position = Vector2(8, 423)
-enemies = Array[PackedScene]([ExtResource("2_stdsh")])
+enemies = Array[PackedScene]([ExtResource("2_stdsh"), ExtResource("3_5xddj")])
 spawn_speed = 8.0
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("1_nexpy")]
 position = Vector2(1620, 90)
-enemies = Array[PackedScene]([ExtResource("3_5xddj")])
+enemies = Array[PackedScene]([ExtResource("3_5xddj"), ExtResource("6_bo3gh"), ExtResource("2_stdsh")])
 spawn_speed = 9.0
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("1_nexpy")]
 position = Vector2(1910, 765)
-enemies = Array[PackedScene]([ExtResource("2_stdsh")])
+enemies = Array[PackedScene]([ExtResource("2_stdsh"), ExtResource("3_5xddj")])
 spawn_speed = 6.0
 
 [node name="EnemySpawner4" parent="." instance=ExtResource("1_nexpy")]
 position = Vector2(345, 1094)
-enemies = Array[PackedScene]([ExtResource("3_5xddj")])
+enemies = Array[PackedScene]([ExtResource("3_5xddj"), ExtResource("2_stdsh"), ExtResource("6_bo3gh")])
 spawn_speed = 8.5
 
 [node name="EnemySpawner5" parent="." instance=ExtResource("1_nexpy")]
 position = Vector2(1829, 1089)
-enemies = Array[PackedScene]([ExtResource("5_5xddj")])
+enemies = Array[PackedScene]([ExtResource("3_5xddj"), ExtResource("6_bo3gh"), ExtResource("2_stdsh")])
 spawn_speed = 6.2

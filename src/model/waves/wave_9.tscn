@@ -1,14 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cj1a42fncwahc"]
+[gd_scene load_steps=9 format=3 uid="uid://cj1a42fncwahc"]
 
 [ext_resource type="Script" uid="uid://ca4gkdpb7dcjh" path="res://src/model/waves/wave.gd" id="1_fl8xq"]
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="2_ecwuy"]
 [ext_resource type="PackedScene" uid="uid://ft46egj1h4it" path="res://src/model/waves/wave_10.tscn" id="2_qtvb3"]
-[ext_resource type="PackedScene" uid="uid://cjngf21xcrnng" path="res://src/model/enemies/basic_enemy.tscn" id="3_qtvb3"]
 [ext_resource type="PackedScene" uid="uid://caq5a0k6ful7y" path="res://src/model/enemies/fast_shooter_enemy.tscn" id="4_lfxh7"]
-[ext_resource type="PackedScene" uid="uid://bbiiiabspp0jd" path="res://src/model/enemies/fast_enemy.tscn" id="5_ej4br"]
 [ext_resource type="PackedScene" uid="uid://bj8ph2dsug71u" path="res://src/model/enemies/canon_enemy.tscn" id="6_5bjpe"]
+[ext_resource type="PackedScene" uid="uid://ckcgsuip2fqfm" path="res://src/model/enemies/bazooka_enemy.tscn" id="6_fl8xq"]
 [ext_resource type="PackedScene" uid="uid://bxrcx8fmr1vqb" path="res://src/model/enemies/resistant_enemy.tscn" id="7_fl8xq"]
-[ext_resource type="PackedScene" uid="uid://fue5w6r26opc" path="res://src/model/enemies/bait_enemy.tscn" id="7_rhdmu"]
 [ext_resource type="PackedScene" uid="uid://dwqufs20qgau" path="res://src/model/enemies/sniper_enemy.tscn" id="8_b5yq8"]
 
 [node name="Wave9" type="Node"]
@@ -18,18 +16,18 @@ next_wave = ExtResource("2_qtvb3")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_ecwuy")]
 position = Vector2(8, 423)
-enemies = Array[PackedScene]([ExtResource("3_qtvb3"), ExtResource("4_lfxh7"), ExtResource("5_ej4br")])
+enemies = Array[PackedScene]([ExtResource("6_5bjpe"), ExtResource("4_lfxh7"), ExtResource("6_fl8xq")])
 spawn_speed = 6.8
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("2_ecwuy")]
 position = Vector2(1620, 90)
-enemies = Array[PackedScene]([ExtResource("6_5bjpe")])
-spawn_speed = 8.2
+enemies = Array[PackedScene]([ExtResource("6_5bjpe"), ExtResource("6_fl8xq"), ExtResource("4_lfxh7"), ExtResource("8_b5yq8")])
+spawn_speed = 9.2
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("2_ecwuy")]
 position = Vector2(1906, 406)
-enemies = Array[PackedScene]([ExtResource("3_qtvb3"), ExtResource("4_lfxh7")])
-spawn_speed = 9.1
+enemies = Array[PackedScene]([ExtResource("8_b5yq8")])
+spawn_speed = 13.2
 
 [node name="EnemySpawner4" parent="." instance=ExtResource("2_ecwuy")]
 position = Vector2(1885, 1070)
@@ -38,15 +36,10 @@ spawn_speed = 26.0
 
 [node name="EnemySpawner5" parent="." instance=ExtResource("2_ecwuy")]
 position = Vector2(424, 1081)
-enemies = Array[PackedScene]([ExtResource("7_rhdmu")])
+enemies = Array[PackedScene]([ExtResource("6_5bjpe"), ExtResource("4_lfxh7")])
 spawn_speed = 9.0
 
 [node name="EnemySpawner6" parent="." instance=ExtResource("2_ecwuy")]
 position = Vector2(-1, 847)
 enemies = Array[PackedScene]([ExtResource("8_b5yq8")])
-spawn_speed = 12.0
-
-[node name="EnemySpawner7" parent="." instance=ExtResource("2_ecwuy")]
-position = Vector2(1284, 1088)
-enemies = Array[PackedScene]([ExtResource("5_ej4br")])
 spawn_speed = 9.0
