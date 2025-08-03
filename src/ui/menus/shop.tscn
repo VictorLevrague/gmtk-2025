@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7n227y8v8gqh"]
+[gd_scene load_steps=17 format=3 uid="uid://7n227y8v8gqh"]
 
 [ext_resource type="Script" uid="uid://cawcaaccwj6vt" path="res://src/ui/menus/shop.gd" id="1_nj1vb"]
 [ext_resource type="Script" uid="uid://dx47xysjgvvcl" path="res://src/model/upgrades/upgrade.gd" id="2_gxqn3"]
@@ -22,6 +22,17 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgb47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajh20"]
+bg_color = Color(0.186884, 0.0572355, 0.254836, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="Animation" id="Animation_3mmui"]
 length = 0.001
@@ -172,6 +183,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="NextWaveButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -186,6 +198,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(332, 85)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cgb47")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ajh20")
 theme_override_styles/hover = ExtResource("8_ajh20")
 theme_override_styles/pressed = ExtResource("8_ajh20")
 theme_override_styles/normal = ExtResource("8_ajh20")

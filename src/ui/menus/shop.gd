@@ -48,6 +48,7 @@ func disable_upgrade_buttons(are_disabled: bool):
         upgrade_ui.stop_animation()
     if are_disabled:
         %AnimationPlayer.play("reset_scale_up")
+    %NextWaveButton.disabled = not are_disabled
 
 func clear_upgrade_container():
     for upgrade_ui in %UpgradeContainer.get_children():

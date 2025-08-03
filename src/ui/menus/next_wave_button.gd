@@ -1,7 +1,8 @@
 extends Button
 
 func _on_mouse_entered() -> void:
-    var scale_tween = bounce_scale_tween(Vector2(1.2, 1.2), 245)
+    if not disabled:
+        var scale_tween = bounce_scale_tween(Vector2(1.2, 1.2), 245)
 
 func _on_mouse_exited() -> void:
     var scale_tween = bounce_scale_tween(Vector2(1.0, 1.0), 255)
