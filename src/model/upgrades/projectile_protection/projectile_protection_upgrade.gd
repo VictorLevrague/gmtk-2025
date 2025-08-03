@@ -1,6 +1,6 @@
 extends Upgrade
 
-var texture: Texture2D = load("res://assets/icons/bulles.png")
+var texture: Texture2D = load("res://assets/icons/bulles_crop.png")
 var name: String = "Projectile Protection"
 
 @export var projectile_protection_increase: int = 1

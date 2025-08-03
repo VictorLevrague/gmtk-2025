@@ -1,14 +1,11 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bm537kvg66xr6"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bm537kvg66xr6"]
 
 [ext_resource type="Script" uid="uid://bary8oe3l4xn6" path="res://src/model/upgrades/loop/loop_upgrade.gd" id="1_wuysa"]
-[ext_resource type="Texture2D" uid="uid://g0ekfu1n8wmm" path="res://assets/icons/potion.png" id="2_x1wad"]
 [ext_resource type="Resource" uid="uid://dwjrdi45ooee2" path="res://src/model/upgrades/loop/line_length_lvl_2.tres" id="3_mfupu"]
 
 [resource]
 script = ExtResource("1_wuysa")
 max_line_length = 200
-name = "Mana"
 level = 1
-texture = ExtResource("2_x1wad")
 unlocked_upgrade = ExtResource("3_mfupu")
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"

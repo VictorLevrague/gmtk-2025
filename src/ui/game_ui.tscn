@@ -4,7 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://dn5uq2hhhe2ib" path="res://src/ui/custom_themes/custom_progress_bar_panel.tres" id="2_uoilq"]
 [ext_resource type="Script" uid="uid://xtcw2ihqr3b2" path="res://src/ui/ui_elements/custom_liquid_bar.gd" id="3_blig7"]
 [ext_resource type="Texture2D" uid="uid://dm0mr1gu326gg" path="res://assets/icons/money-bag.png" id="4_7ft61"]
-[ext_resource type="Texture2D" uid="uid://blfdv33dxhjib" path="res://assets/icons/dumbbell.png" id="4_xtgum"]
+[ext_resource type="Texture2D" uid="uid://dijp8dsytfdsa" path="res://assets/icons/dama_test.png" id="4_xtgum"]
 [ext_resource type="Texture2D" uid="uid://beajdywxmax6p" path="res://assets/icons/bulles.png" id="5_7ft61"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2llbp"]
@@ -187,10 +187,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="StrengthTexture" type="TextureRect" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/Strength"]
-custom_minimum_size = Vector2(60, 20)
 layout_mode = 2
 texture = ExtResource("4_xtgum")
-expand_mode = 1
+stretch_mode = 2
 
 [node name="StrengthLabel" type="Label" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/Strength"]
 unique_name_in_owner = true

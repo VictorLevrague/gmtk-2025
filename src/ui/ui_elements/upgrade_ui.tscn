@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="1_7v2rp"]
 [ext_resource type="Script" uid="uid://be1no4frvurro" path="res://src/ui/ui_elements/upgrade_ui.gd" id="2_nom1l"]
-[ext_resource type="Texture2D" uid="uid://c48dl27qr28kq" path="res://assets/icons/cog.png" id="3_wsuvo"]
+[ext_resource type="Texture2D" uid="uid://ixwlo6xx1kuj" path="res://assets/icons/fiole_color.png" id="3_7v2rp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtnkl"]
 
@@ -62,9 +62,9 @@ _data = {
 }
 
 [node name="UpgradeUI" type="Panel"]
-custom_minimum_size = Vector2(305, 290)
-offset_right = 305.0
-offset_bottom = 360.0
+custom_minimum_size = Vector2(365, 553)
+offset_right = 365.0
+offset_bottom = 553.0
 pivot_offset = Vector2(152, 180)
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -102,8 +102,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("3_wsuvo")
+texture = ExtResource("3_7v2rp")
 expand_mode = 1
+stretch_mode = 3
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
