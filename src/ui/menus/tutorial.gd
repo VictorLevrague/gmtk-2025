@@ -43,7 +43,7 @@ func _ready() -> void:
     %Player.player_mana_changed.connect(_on_player_mana_changed)
     %TutorialSpawner.get_node("%SpawnerTimer").stop()
     Signals.enemy_eliminated.connect(_on_enemy_eliminated)
-
+    %ContinueButton.disabled = true
 
 func _on_continue_button_pressed() -> void:
     AudioManager.get_node("%ButtonClick2").play()
@@ -68,7 +68,8 @@ func _on_continue_button_pressed() -> void:
         get_tree().change_scene_to_packed(load("res://src/ui/menus/game.tscn"))
 
 func _on_player_mana_changed(value: float):
-    if value == 0:
+    if value <= 0:
+        print("value 0")
         %ContinueButton.disabled = false
 
 func _on_enemy_eliminated():
