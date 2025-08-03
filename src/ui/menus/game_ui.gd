@@ -34,8 +34,8 @@ func update_max_health(max_health: float):
 func update_max_mana(max_mana: float):
     %Mana.maximum = max_mana
 
-func update_damage(damage_lvl: int):
-    %StrengthLabel.text = str(damage_lvl)
+func update_damage(damage_per_loop: int):
+    %StrengthLabel.text = str(damage_per_loop)
 
-func update_protection(damage_lvl: int):
-    %ProtectionLabel.text = str(damage_lvl)
+func update_protection(total_protection: int):
+    %ProtectionLabel.text = str(total_protection - 1)

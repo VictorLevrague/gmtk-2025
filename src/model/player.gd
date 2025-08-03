@@ -33,13 +33,17 @@ var coins: int = 0:
         coins = value
         emit_signal("player_coins_changed", coins)
 
-var damage_per_loop: float = 100
+var damage_per_loop: int:
+    set(value):
+        damage_per_loop = value
+        Signals.emit_signal("update_damage", damage_per_loop)
 var maximum_projectile_hit_before_break: int = 1
 
 @onready var base_sprite_color = %Sprite2D.modulate
 
 func _ready() -> void:
     Signals.end_wave.connect(full_heal)
+    damage_per_loop = 100
 
 func _on_body_entered(body: Node2D) -> void:
     take_damage(body)

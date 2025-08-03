@@ -185,11 +185,12 @@ layout_mode = 2
 
 [node name="Strength" type="HBoxContainer" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats"]
 layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="StrengthTexture" type="TextureRect" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/Strength"]
 layout_mode = 2
 texture = ExtResource("4_xtgum")
-stretch_mode = 2
+stretch_mode = 3
 
 [node name="StrengthLabel" type="Label" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/Strength"]
 unique_name_in_owner = true
