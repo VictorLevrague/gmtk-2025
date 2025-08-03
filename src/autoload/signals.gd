@@ -11,5 +11,6 @@ signal victory
 signal update_damage(damage_per_loop: int)
 signal update_protection(total_protection: int)
 signal enemy_eliminated
-
 signal player_upgrade(upgrade: Upgrade)
+
+signal upgrade_chosen

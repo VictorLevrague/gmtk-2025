@@ -8,10 +8,13 @@ var simutaneous_nb_of_upgrades = 3
 func _ready() -> void:
     Signals.end_wave.connect(open_shop)
     Signals.player_upgrade.connect(player_upgrade)
+    %NextWaveInfoLayer.hide_all.connect(_on_hide_all)
     hide()
 
 func open_shop():
     show()
+    %NextWaveInfoLayer.hide()
+    %ShopLayer.show()
     init_upgrades()
     disable_upgrade_buttons(false)
     %AnimationPlayer.play("scale_up")
@@ -30,9 +33,11 @@ func init_upgrades():
         %UpgradeContainer.add_child(upgrade_ui)
 
 func _on_next_wave_button_pressed() -> void:
-    hide()
+    %ShopLayer.hide()
     AudioManager.get_node("%ButtonClick1").play()
-    Signals.emit_signal("new_wave")
+    %NextWaveInfoLayer.show()
+    Signals.emit_signal("upgrade_chosen")
+    %NextWaveInfoLayer.init_enemy_icons()
 
 func player_upgrade(upgrade: Upgrade):
     if player:
@@ -48,8 +53,11 @@ func disable_upgrade_buttons(are_disabled: bool):
         upgrade_ui.stop_animation()
     if are_disabled:
         %AnimationPlayer.play("reset_scale_up")
-    %NextWaveButton.disabled = not are_disabled
+    %NextWaveInfoButton.disabled = not are_disabled
 
 func clear_upgrade_container():
     for upgrade_ui in %UpgradeContainer.get_children():
         upgrade_ui.queue_free()
+
+func _on_hide_all():
+    hide()

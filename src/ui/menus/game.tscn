@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cu7fkk8unxjm7"]
+[gd_scene load_steps=19 format=3 uid="uid://cu7fkk8unxjm7"]
 
 [ext_resource type="Shader" uid="uid://liyy3rswu2an" path="res://src/ui/menus/background.gdshader" id="1_1k1v4"]
+[ext_resource type="Script" uid="uid://cucuxmpuype5b" path="res://src/ui/menus/game.gd" id="1_51e1e"]
 [ext_resource type="Texture2D" uid="uid://rlme3ikl0q5j" path="res://assets/water.png" id="1_to1yy"]
 [ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="2_to1yy"]
 [ext_resource type="PackedScene" uid="uid://bxpk6eksitrar" path="res://src/model/player.tscn" id="3_wayuo"]
@@ -36,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_51e1e")
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.945098, 0.803922, 0.760784, 1)
@@ -67,10 +69,12 @@ player = NodePath("../Player")
 position = Vector2(960, 540)
 
 [node name="WaveManager" parent="GameComponents" instance=ExtResource("5_jrwaj")]
+unique_name_in_owner = true
 
 [node name="ShopLayer" type="CanvasLayer" parent="."]
 
 [node name="Shop" parent="ShopLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_to1yy")]
+unique_name_in_owner = true
 visible = false
 offset_left = 88.0
 offset_top = 201.0
