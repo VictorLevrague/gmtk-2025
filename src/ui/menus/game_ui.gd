@@ -19,8 +19,8 @@ func _ready() -> void:
 	Signals.update_wave_time.connect(update_wave_time)
 
 func update_wave_id(wave_id: int) -> void:
-	var base_text = "Wave n°%s"
-	%WaveNumber.text = base_text % [wave_id]
+    var base_text = "Wave n°%s/20"
+    %WaveNumber.text = base_text % [wave_id]
 
 func update_wave_time(wave_time_left: float) -> void:
 	%WaveTime.text = str(ceili(wave_time_left))
