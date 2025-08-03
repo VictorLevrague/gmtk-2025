@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://xtcw2ihqr3b2" path="res://src/ui/ui_elements/custom_liquid_bar.gd" id="3_blig7"]
 [ext_resource type="Texture2D" uid="uid://dm0mr1gu326gg" path="res://assets/icons/money-bag.png" id="4_7ft61"]
 [ext_resource type="Texture2D" uid="uid://dijp8dsytfdsa" path="res://assets/icons/dama_test.png" id="4_xtgum"]
-[ext_resource type="Texture2D" uid="uid://beajdywxmax6p" path="res://assets/icons/bulles.png" id="5_7ft61"]
+[ext_resource type="Texture2D" uid="uid://dhyxt7hi40q8i" path="res://assets/icons/bulles_crop_small.png" id="5_xtgum"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2llbp"]
 bg_color = Color(0.813294, 0.695152, 0.436256, 1)
@@ -200,10 +200,11 @@ text = "0"
 layout_mode = 2
 
 [node name="ProjectileTexture" type="TextureRect" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/ProjectileProtection"]
+modulate = Color(0.492761, 0.492761, 0.49276, 1)
 custom_minimum_size = Vector2(60, 20)
 layout_mode = 2
-texture = ExtResource("5_7ft61")
-expand_mode = 1
+texture = ExtResource("5_xtgum")
+stretch_mode = 2
 
 [node name="ProtectionLabel" type="Label" parent="CanvasLayer/StatsPanel/StatsContainer/AdditionalStats/ProjectileProtection"]
 unique_name_in_owner = true
