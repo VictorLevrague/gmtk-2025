@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://vbmofj4eraqq" path="res://assets/icons/bulle_projectile.png" id="2_8a5rt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4nbgw"]
-radius = 4.82253
+radius = 7.838
 height = 23.0695
 
 [sub_resource type="Gradient" id="Gradient_upyqx"]
@@ -42,16 +42,16 @@ speed = 150.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(0.571703, 0.282999, 0, 1)
-position = Vector2(1.71682, -5.36442e-05)
+position = Vector2(-0.28318, -1.00005)
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_8a5rt")
-hframes = 8
-vframes = 5
-frame = 34
+hframes = 5
+vframes = 6
+frame = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.110931, -0.301521)
+position = Vector2(-0.110931, -1.30152)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4nbgw")
 
