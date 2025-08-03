@@ -50,6 +50,7 @@ func _on_area_entered(area: Area2D) -> void:
 func take_damage(body: Node2D):
     if "damage" in body:
         health -= body.damage
+        show_damage_number(body.damage, body.global_position)
         AudioManager.get_node("%PlayerDamaged").play()
         var damage_tween = damage_tween()
         body.queue_free()
@@ -70,3 +71,21 @@ func damage_tween() -> Tween:
 
 func _process(delta: float) -> void:
     position = get_viewport().get_visible_rect().size / 2.0
+
+func show_damage_number(damage_value: int, body_position: Vector2) -> void:
+    var damage_label = Label.new()
+    #damage_label.modulate = Color(213./255., 96./255., 73./255., 0)
+    damage_label.global_position = body_position
+    damage_label.text = str(damage_value)
+    damage_label.top_level = true
+    damage_label.set("theme_override_font_sizes/font_size", 50)
+    damage_label.modulate.a = 0
+    add_child(damage_label)
+    await fade_in_out_animation(damage_label).finished
+    damage_label.queue_free()
+
+func fade_in_out_animation(label: Label) -> Tween:
+    var tween = get_tree().create_tween()
+    tween.tween_property(label, "modulate:a", 1, 2).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
+    tween.chain().tween_property(label, "modulate:a", 0, 1.5).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
+    return tween
