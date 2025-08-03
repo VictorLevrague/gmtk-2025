@@ -68,7 +68,7 @@ func _on_continue_button_pressed() -> void:
         get_tree().change_scene_to_packed(load("res://src/ui/menus/game.tscn"))
 
 func _on_player_mana_changed(value: float):
-    if value <= 0:
+    if value <= 0 and current_tutorial == 0:
         %ContinueButton.disabled = false
 
 func _on_enemy_eliminated():
