@@ -162,30 +162,6 @@ player = NodePath("../Player")
 unique_name_in_owner = true
 position = Vector2(960, 540)
 
-[node name="OptionsLayer" type="CanvasLayer" parent="."]
-
-[node name="Options" parent="OptionsLayer" instance=ExtResource("8_wuta4")]
-unique_name_in_owner = true
-visible = false
-
-[node name="SettingsButton" type="TextureButton" parent="OptionsLayer"]
-process_mode = 3
-anchors_preset = -1
-anchor_left = 0.933
-anchor_top = 0.873
-anchor_right = 0.997
-anchor_bottom = 0.993
-offset_left = 0.639893
-offset_top = 0.159973
-offset_right = -0.240112
-offset_bottom = -0.440063
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("9_tyo4r")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("10_p76rx")
-
 [node name="TransitionLayer" type="CanvasLayer" parent="."]
 
 [node name="TransitionScreen" type="ColorRect" parent="TransitionLayer"]
@@ -255,7 +231,31 @@ maximum_nb_enemies_on_screen = 1
 spawn_distance = 0
 spawn_speed = 23.0
 
-[connection signal="pressed" from="OptionsLayer/SettingsButton" to="OptionsLayer/SettingsButton" method="_on_pressed"]
+[node name="OptionsLayer" type="CanvasLayer" parent="."]
+
+[node name="Options" parent="OptionsLayer" instance=ExtResource("8_wuta4")]
+unique_name_in_owner = true
+visible = false
+
+[node name="SettingsButton" type="TextureButton" parent="OptionsLayer"]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.933
+anchor_top = 0.873
+anchor_right = 0.997
+anchor_bottom = 0.993
+offset_left = 0.639893
+offset_top = 0.159973
+offset_right = -0.240112
+offset_bottom = -0.440063
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("9_tyo4r")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("10_p76rx")
+
 [connection signal="mouse_entered" from="TutorialLayer/TutorialPanel/ContinueButton" to="TutorialLayer/TutorialPanel/ContinueButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TutorialLayer/TutorialPanel/ContinueButton" to="TutorialLayer/TutorialPanel/ContinueButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="TutorialLayer/TutorialPanel/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="OptionsLayer/SettingsButton" to="OptionsLayer/SettingsButton" method="_on_pressed"]
