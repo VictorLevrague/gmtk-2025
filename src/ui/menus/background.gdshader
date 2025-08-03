@@ -7,6 +7,9 @@ uniform float caustic_strength : hint_range(0.0, 1.0) = 0.3;
 uniform vec3 deep_color : source_color = vec3(0.02, 0.08, 0.25);
 uniform vec3 shallow_color : source_color = vec3(0.1, 0.3, 0.6);
 
+uniform float wave_1_intensity: hint_range(0.0, 3.0, 0.1) = 2.0;
+uniform float wave_2_intensity: hint_range(0.0, 3.0, 0.1) = 2.0;
+
 #define PI 3.141592653589793
 
 // 2D pseudo-random
@@ -48,8 +51,8 @@ void fragment() {
     vec2 uv = UV;
 
     // base wave layers (slow sinusoidal)
-    float waves = sin((uv.x * wave_scale + TIME * wave_speed.x) * PI * 2.0)
-                * sin((uv.y * wave_scale + TIME * wave_speed.y) * PI * 2.0);
+    float waves = sin((uv.x * wave_scale + TIME * wave_speed.x) * PI * wave_1_intensity)
+                * sin((uv.y * wave_scale + TIME * wave_speed.y) * PI * wave_2_intensity);
     // soften and remap
     waves = smoothstep(-0.6, 0.6, waves) * 0.5;
 

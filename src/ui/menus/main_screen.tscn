@@ -19,6 +19,8 @@ shader_parameter/noise_strength = 0.648
 shader_parameter/caustic_strength = 0.706
 shader_parameter/deep_color = Color(0.00493963, 0.0229362, 0.115184, 1)
 shader_parameter/shallow_color = Color(0.235137, 0.491506, 0.884974, 1)
+shader_parameter/wave_1_intensity = 0.7
+shader_parameter/wave_2_intensity = 0.7
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydojc"]
 

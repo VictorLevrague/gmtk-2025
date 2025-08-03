@@ -24,6 +24,8 @@ shader_parameter/noise_strength = 0.2
 shader_parameter/caustic_strength = 0.53
 shader_parameter/deep_color = Color(0.02, 0.08, 0.25, 1)
 shader_parameter/shallow_color = Color(0.1, 0.3, 0.6, 1)
+shader_parameter/wave_1_intensity = 0.7
+shader_parameter/wave_2_intensity = 0.7
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqht0"]
 

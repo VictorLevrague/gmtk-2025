@@ -69,7 +69,6 @@ func _on_continue_button_pressed() -> void:
 
 func _on_player_mana_changed(value: float):
     if value <= 0:
-        print("value 0")
         %ContinueButton.disabled = false
 
 func _on_enemy_eliminated():
