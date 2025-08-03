@@ -6,4 +6,4 @@ var name: String = "Loop Damage"
 
 func upgrade_function(player: Player):
     player.damage_per_loop += damage_upgrade
-    Signals.emit_signal("update_damage", level)
+    Signals.emit_signal("update_damage", player.damage_per_loop)

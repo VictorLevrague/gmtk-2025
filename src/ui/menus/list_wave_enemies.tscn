@@ -1,15 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://7n227y8v8gqh"]
+[gd_scene load_steps=12 format=3 uid="uid://cjvexc1w573f7"]
 
-[ext_resource type="Script" uid="uid://cawcaaccwj6vt" path="res://src/ui/menus/shop.gd" id="1_nj1vb"]
-[ext_resource type="Script" uid="uid://dx47xysjgvvcl" path="res://src/model/upgrades/upgrade.gd" id="2_gxqn3"]
-[ext_resource type="PackedScene" uid="uid://in3d1ruusblo" path="res://src/ui/ui_elements/upgrade_ui.tscn" id="2_q2uod"]
-[ext_resource type="Resource" uid="uid://r1btr8f2sreg" path="res://src/model/upgrades/health/health_lvl_1.tres" id="3_gprgp"]
-[ext_resource type="Resource" uid="uid://bm537kvg66xr6" path="res://src/model/upgrades/loop/line_length_lvl_1.tres" id="4_uwl6s"]
-[ext_resource type="Resource" uid="uid://bto0dpe12hshw" path="res://src/model/upgrades/damage/damage_lvl_1.tres" id="5_5vpnt"]
-[ext_resource type="Resource" uid="uid://mc6gud54dlaq" path="res://src/model/upgrades/projectile_protection/projectile_protec_lvl_1.tres" id="6_hi1mt"]
-[ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="8_ajh20"]
-[ext_resource type="Script" uid="uid://b4ems70jni3t" path="res://src/ui/menus/next_wave_button.gd" id="9_3mmui"]
-[ext_resource type="PackedScene" uid="uid://cjvexc1w573f7" path="res://src/ui/menus/list_wave_enemies.tscn" id="10_3mmui"]
+[ext_resource type="Script" uid="uid://dn24feq4p56dq" path="res://src/ui/menus/next_wave_info.gd" id="1_t4sgk"]
+[ext_resource type="PackedScene" uid="uid://cjngf21xcrnng" path="res://src/model/enemies/basic_enemy.tscn" id="2_cwlb2"]
+[ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="8_hnqot"]
+[ext_resource type="Script" uid="uid://b4ems70jni3t" path="res://src/ui/menus/next_wave_button.gd" id="9_aw5l6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4con0"]
 bg_color = Color(0.313726, 0.560784, 0.596078, 1)
@@ -40,7 +34,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ShopLayer/Title:scale")
+tracks/0/path = NodePath("Title:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +46,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ShopLayer/Title:theme_override_colors/font_color")
+tracks/1/path = NodePath("Title:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -67,7 +61,7 @@ resource_name = "reset_scale_up"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ShopLayer/Title:scale")
+tracks/0/path = NodePath("Title:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,7 +73,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ShopLayer/Title:theme_override_colors/font_color")
+tracks/1/path = NodePath("Title:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -96,19 +90,19 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ShopLayer/Title:scale")
+tracks/0/path = NodePath("Title:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+"values": [Vector2(1, 1), Vector2(1.3, 1.3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ShopLayer/Title:theme_override_colors/font_color")
+tracks/1/path = NodePath("Title:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -125,26 +119,22 @@ _data = {
 &"scale_up": SubResource("Animation_ajh20")
 }
 
-[node name="Shop" type="Control"]
+[node name="NextWaveInfo" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.101
+anchor_top = 0.135
+anchor_right = 0.899
+anchor_bottom = 0.864
+offset_left = -0.920013
+offset_top = 0.199997
+offset_right = -0.0800781
+offset_bottom = -0.119995
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nj1vb")
-possible_upgrades = Array[ExtResource("2_gxqn3")]([ExtResource("3_gprgp"), ExtResource("4_uwl6s"), ExtResource("5_5vpnt"), ExtResource("6_hi1mt")])
+script = ExtResource("1_t4sgk")
+enemies = Array[PackedScene]([ExtResource("2_cwlb2")])
 
-[node name="ShopLayer" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Background2" type="Panel" parent="ShopLayer"]
+[node name="Background2" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,21 +143,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4con0")
 
-[node name="Title" type="Label" parent="ShopLayer"]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 608.0
-offset_right = -608.0
+offset_left = 322.0
+offset_right = -321.0
 offset_bottom = 101.0
 grow_horizontal = 2
 pivot_offset = Vector2(352, 50)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 100
-text = "Choose an upgrade"
+text = "Enemies in next wave"
 horizontal_alignment = 1
 
-[node name="UpgradeContainer" type="HBoxContainer" parent="ShopLayer"]
+[node name="GridContainer" type="GridContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -175,24 +165,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -686.0
-offset_top = -276.5
-offset_right = 686.0
-offset_bottom = 276.5
+offset_left = -563.61
+offset_top = -210.441
+offset_right = 4971.39
+offset_bottom = 1669.56
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+theme_override_constants/h_separation = 300
+theme_override_constants/v_separation = 300
+columns = 5
 
-[node name="Upgrade" parent="ShopLayer/UpgradeContainer" instance=ExtResource("2_q2uod")]
-layout_mode = 2
-upgrade = ExtResource("3_gprgp")
-
-[node name="Upgrade2" parent="ShopLayer/UpgradeContainer" instance=ExtResource("2_q2uod")]
-layout_mode = 2
-
-[node name="Upgrade3" parent="ShopLayer/UpgradeContainer" instance=ExtResource("2_q2uod")]
-layout_mode = 2
-
-[node name="NextWaveInfoButton" type="Button" parent="ShopLayer"]
+[node name="NextWaveButton" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -209,24 +193,11 @@ grow_vertical = 0
 pivot_offset = Vector2(332, 85)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cgb47")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ajh20")
-theme_override_styles/hover = ExtResource("8_ajh20")
-theme_override_styles/pressed = ExtResource("8_ajh20")
-theme_override_styles/normal = ExtResource("8_ajh20")
-text = "Prepare for next wave"
-script = ExtResource("9_3mmui")
-
-[node name="NextWaveInfoLayer" parent="." instance=ExtResource("10_3mmui")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -766.755
-offset_top = -389.165
-offset_right = 766.245
-offset_bottom = 397.835
+theme_override_styles/hover = ExtResource("8_hnqot")
+theme_override_styles/pressed = ExtResource("8_hnqot")
+theme_override_styles/normal = ExtResource("8_hnqot")
+text = "Next wave"
+script = ExtResource("9_aw5l6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -235,6 +206,6 @@ libraries = {
 }
 autoplay = "scale_up"
 
-[connection signal="mouse_entered" from="ShopLayer/NextWaveInfoButton" to="ShopLayer/NextWaveInfoButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ShopLayer/NextWaveInfoButton" to="ShopLayer/NextWaveInfoButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="ShopLayer/NextWaveInfoButton" to="." method="_on_next_wave_button_pressed"]
+[connection signal="mouse_entered" from="NextWaveButton" to="NextWaveButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NextWaveButton" to="NextWaveButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="NextWaveButton" to="." method="_on_next_wave_button_pressed"]
