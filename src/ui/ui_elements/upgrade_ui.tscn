@@ -86,7 +86,7 @@ grow_vertical = 2
 [node name="Name" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Upgrade name"
 horizontal_alignment = 1
 
@@ -95,6 +95,13 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Level 0"
+horizontal_alignment = 1
+
+[node name="UpgradeAmount" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+ x health"
 horizontal_alignment = 1
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer"]

@@ -5,6 +5,16 @@ extends Panel
         upgrade = value
         if upgrade.name:
             %Name.text = upgrade.name
+            match upgrade.name:
+                "Loop Damage":
+                    %UpgradeAmount.text = "+ %s %s" % [upgrade.damage_upgrade, "damage per loop"]
+                "Health":
+                    %UpgradeAmount.text = "+ %s %s" % [upgrade.max_health_gain, "max health"]
+                "Mana":
+                    %UpgradeAmount.text = "+ %s %s" % [upgrade.max_line_length, "max mana"]
+                "Projectile Protection":
+                    %UpgradeAmount.text = "+ %s %s" % [upgrade.projectile_protection_increase, "projectile absorption"]
+
         %Level.text = "Level %s" % [str(upgrade.level)]
         if upgrade.texture:
             %Icon.texture = upgrade.texture
