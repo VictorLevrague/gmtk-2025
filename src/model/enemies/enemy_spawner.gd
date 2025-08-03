@@ -26,7 +26,8 @@ func spawn(position: Vector2):
         print("Nb enemies is max")
 
 func get_random_position() -> Vector2:
-    var center_screen = get_viewport_rect().size / 2.0
+    #var center_screen = get_viewport_rect().size / 2.0
+    var center_screen = get_viewport().get_visible_rect().size / 2.0
     return global_position + spawn_distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 
 func clear_enemies():
