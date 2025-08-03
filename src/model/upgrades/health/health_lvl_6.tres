@@ -1,14 +1,11 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cxare1tmmsbkh"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cxare1tmmsbkh"]
 
 [ext_resource type="Script" uid="uid://cwqtqyq2frtyg" path="res://src/model/upgrades/health/health_upgrade.gd" id="1_6u7mi"]
-[ext_resource type="Texture2D" uid="uid://ce5htseikqnqd" path="res://assets/icons/coeurs.png" id="2_1faab"]
 [ext_resource type="Resource" uid="uid://c3fwdoxdntsts" path="res://src/model/upgrades/health/health_lvl_7.tres" id="3_1faab"]
 
 [resource]
 script = ExtResource("1_6u7mi")
-max_health_gain = 80
-name = "Health"
+max_health_gain = 25
 level = 6
-texture = ExtResource("2_1faab")
 unlocked_upgrade = ExtResource("3_1faab")
 metadata/_custom_type_script = "uid://dx47xysjgvvcl"
