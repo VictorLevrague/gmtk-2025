@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bom5tpj3r0k0c" path="res://assets/icons/crabe.png" id="2_p54b5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s4a4e"]
-radius = 84.0361
-height = 209.563
+radius = 81.4094
+height = 162.819
 
 [node name="ResistantEnemy" type="CharacterBody2D" groups=["enemy", "loop_stopper"]]
 collision_layer = 2
@@ -22,6 +22,5 @@ shape = SubResource("CapsuleShape2D_s4a4e")
 unique_name_in_owner = true
 modulate = Color(1, 0.422572, 0.311394, 1)
 position = Vector2(0.25351, -3.35455)
-rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_p54b5")
