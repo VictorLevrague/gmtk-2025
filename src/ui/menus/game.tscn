@@ -10,8 +10,8 @@
 [ext_resource type="Script" uid="uid://dr5av1apne3iu" path="res://src/ui/menus/game_over.gd" id="7_vqht0"]
 [ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="7_wayuo"]
 [ext_resource type="Script" uid="uid://dvrfxcqhbtn12" path="res://src/ui/menus/restart_button.gd" id="8_vgh4s"]
+[ext_resource type="Texture2D" uid="uid://dtl7g1ivckeyq" path="res://assets/icons/engre.png" id="9_0of8p"]
 [ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="10_jrwaj"]
-[ext_resource type="Texture2D" uid="uid://c48dl27qr28kq" path="res://assets/icons/cog.png" id="11_44nrx"]
 [ext_resource type="Script" uid="uid://042v75r6or48" path="res://src/ui/buttons/settings_texture_button.gd" id="12_1k1v4"]
 [ext_resource type="Script" uid="uid://itqtj6yfj8fq" path="res://src/ui/menus/win.gd" id="13_44nrx"]
 [ext_resource type="Script" uid="uid://cqipchr6sf3y7" path="res://src/ui/menus/transition_screen.gd" id="15_0of8p"]
@@ -85,19 +85,19 @@ visible = false
 [node name="SettingsButton" type="TextureButton" parent="OptionsLayer"]
 process_mode = 3
 anchors_preset = -1
-anchor_left = 0.933
-anchor_top = 0.873
-anchor_right = 0.997
-anchor_bottom = 0.993
-offset_left = 0.639893
-offset_top = 0.159973
-offset_right = -0.240112
-offset_bottom = -0.440063
+anchor_left = 0.945
+anchor_top = 0.906
+anchor_right = 0.984
+anchor_bottom = 0.978
+offset_left = -150.4
+offset_top = -156.48
+offset_right = 149.72
+offset_bottom = 155.76
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("11_44nrx")
-ignore_texture_size = true
-stretch_mode = 0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(187, 195)
+texture_normal = ExtResource("9_0of8p")
 script = ExtResource("12_1k1v4")
 
 [node name="GameOverLayer" type="CanvasLayer" parent="."]

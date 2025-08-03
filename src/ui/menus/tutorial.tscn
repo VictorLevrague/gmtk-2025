@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://261qfcdd3sjt" path="res://src/model/loop_tool.tscn" id="4_oh5fe"]
 [ext_resource type="PackedScene" uid="uid://bxpk6eksitrar" path="res://src/model/player.tscn" id="5_dsj32"]
 [ext_resource type="PackedScene" uid="uid://ct1vpo7esd1h5" path="res://src/ui/menus/settings_menu.tscn" id="8_wuta4"]
-[ext_resource type="Texture2D" uid="uid://c48dl27qr28kq" path="res://assets/icons/cog.png" id="9_tyo4r"]
 [ext_resource type="Script" uid="uid://042v75r6or48" path="res://src/ui/buttons/settings_texture_button.gd" id="10_p76rx"]
 [ext_resource type="Script" uid="uid://15rgs3frsj1j" path="res://src/ui/menus/continue_button.gd" id="11_2pmef"]
+[ext_resource type="Texture2D" uid="uid://dtl7g1ivckeyq" path="res://assets/icons/engre.png" id="11_bimhp"]
 [ext_resource type="StyleBox" uid="uid://deh0j1dwxiqxt" path="res://src/ui/custom_themes/panel_menu.tres" id="12_bg47k"]
 [ext_resource type="PackedScene" uid="uid://b2jw008k6maxe" path="res://src/model/enemies/enemy_spawner.tscn" id="12_bimhp"]
 [ext_resource type="Script" uid="uid://cqipchr6sf3y7" path="res://src/ui/menus/transition_screen.gd" id="15_hrhvq"]
@@ -244,15 +244,15 @@ anchor_left = 0.933
 anchor_top = 0.873
 anchor_right = 0.997
 anchor_bottom = 0.993
-offset_left = 0.639893
-offset_top = 0.159973
-offset_right = -0.240112
-offset_bottom = -0.440063
+offset_left = -127.36
+offset_top = -120.84
+offset_right = 124.76
+offset_bottom = 139.56
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("9_tyo4r")
-ignore_texture_size = true
-stretch_mode = 0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(187, 195)
+texture_normal = ExtResource("11_bimhp")
 script = ExtResource("10_p76rx")
 
 [connection signal="mouse_entered" from="TutorialLayer/TutorialPanel/ContinueButton" to="TutorialLayer/TutorialPanel/ContinueButton" method="_on_mouse_entered"]
